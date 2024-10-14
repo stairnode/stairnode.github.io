@@ -1,4 +1,4 @@
-# 10月13日 | Stair Node节点订阅每天更新22.7M/S免费节点订阅链接  更新时间 2024-10-13 09:17:09
+# 10月14日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接，付费节点订阅推荐  更新时间 2024-10-14 10:47:40
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://stairnode.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://stairnode.github.io/uploads/2024/10/0-20241013.yaml
-- https://stairnode.github.io/uploads/2024/10/1-20241013.yaml
-- https://stairnode.github.io/uploads/2024/10/2-20241013.yaml
-- https://stairnode.github.io/uploads/2024/10/3-20241013.yaml
-- https://stairnode.github.io/uploads/2024/10/4-20241013.yml
+- https://stairnode.github.io/uploads/2024/10/0-20241014.yaml
+- https://stairnode.github.io/uploads/2024/10/1-20241014.yaml
+- https://stairnode.github.io/uploads/2024/10/2-20241014.yaml
+- https://stairnode.github.io/uploads/2024/10/3-20241014.yaml
+- https://stairnode.github.io/uploads/2024/10/4-20241014.yml
 
 ### V2ray订阅链接
 
-- https://stairnode.github.io/uploads/2024/10/0-20241013.txt
-- https://stairnode.github.io/uploads/2024/10/1-20241013.txt
-- https://stairnode.github.io/uploads/2024/10/2-20241013.txt
-- https://stairnode.github.io/uploads/2024/10/3-20241013.txt
-- https://stairnode.github.io/uploads/2024/10/4-20241013.txt
+- https://stairnode.github.io/uploads/2024/10/0-20241014.txt
+- https://stairnode.github.io/uploads/2024/10/1-20241014.txt
+- https://stairnode.github.io/uploads/2024/10/2-20241014.txt
+- https://stairnode.github.io/uploads/2024/10/3-20241014.txt
+- https://stairnode.github.io/uploads/2024/10/4-20241014.txt
 
 ## 更多clash节点订阅 ：
 
