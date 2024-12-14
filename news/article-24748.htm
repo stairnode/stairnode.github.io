@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-24748.htm" />
+    <title>springboot：异步注解@Async的前世今生_在线工具</title>
+        <meta name="description" content="在前边的文章中，和小伙伴一起认识了异步执行的好处，以及如何进行异步开发，对，就是使用@Async注解，在使用异步注解@Async的过程中也存在一些坑，不过通过正确的打开方式也可以很好的避免，今天想和大" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/">Stair Node</a>
+                        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><span>关于</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span>联系</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('__ADDON__/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">springboot：异步注解@Async的前世今生_在线工具</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p><span style="font-size: 16px">在前边的文章中，和小伙伴一起认识了异步执行的好处，以及如何进行异步开发，对，就是使用@Async注解，在使用异步注解@Async的过程中也存在一些坑，不过通过正确的打开方式也可以很好的避免，今天想和大家分享下@Async的原理，开始前先温习下之前的文章哦，</span></p> <p><span style="font-size: 16px"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/teach/p/14127024.html"  target="_blank"  rel="nofollow">springboot：异步调用@Async</a></span></p> <p><span style="font-size: 16px"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/teach/p/15169153.html"  target="_blank"  rel="nofollow">springboot：使用异步注解@Async获取执行结果的坑</a></span></p> <p><span style="font-size: 16px"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/teach/p/15202284.html"  target="_blank"  rel="nofollow">springboot：嵌套使用异步注解@Async还会异步执行吗</a></span></p> </h1> <p><span style="font-size: 16px">在前边说到在使用@Async的时候，在一个类中两个@Async的方法嵌套使用会导致异步失败，下面把场景重现下，</span></p> <p><span style="font-size: 16px">AsyncContoller.java</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px"><span style="color: rgba(0, 0, 255, 1)">package</span><span style="color: rgba(0, 0, 0, 1)"> com.example.myDemo.controller;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> com.example.myDemo.service.AsyncService; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.beans.factory.annotation.Autowired; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.stereotype.Controller; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.web.bind.annotation.GetMapping; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.web.bind.annotation.ResponseBody; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> java.util.concurrent.ExecutionException;  @Controller </span><span style="color: rgba(0, 0, 255, 1)">public</span> <span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> AsyncController {     @Autowired     </span><span style="color: rgba(0, 0, 255, 1)">private</span><span style="color: rgba(0, 0, 0, 1)"> AsyncService asyncService;     @GetMapping(</span>"/aysnc"<span style="color: rgba(0, 0, 0, 1)">)     @ResponseBody     </span><span style="color: rgba(0, 0, 255, 1)">public</span><span style="color: rgba(0, 0, 0, 1)"> String asyncMethod(){         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)"> {             Long start</span>=<span style="color: rgba(0, 0, 0, 1)">System.currentTimeMillis();             </span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">调用method3方法，该方法中嵌套了一个异步方法</span>             String str3=<span style="color: rgba(0, 0, 0, 1)">asyncService.method3().get();             Long end</span>=<span style="color: rgba(0, 0, 0, 1)">System.currentTimeMillis();             System.out.println(</span>"执行时长:"+(end-<span style="color: rgba(0, 0, 0, 1)">start));         } </span><span style="color: rgba(0, 0, 255, 1)">catch</span> (ExecutionException |<span style="color: rgba(0, 0, 0, 1)"> InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> "hello @Async"<span style="color: rgba(0, 0, 0, 1)">;     } }</span></span></pre> </div> <p><span style="font-size: 16px">下面是method3方法</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px"><span style="color: rgba(0, 0, 255, 1)">package</span><span style="color: rgba(0, 0, 0, 1)"> com.example.myDemo.service;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.Async; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.AsyncResult; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.stereotype.Service; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> java.util.concurrent.Future;  @Service @Async </span><span style="color: rgba(0, 0, 255, 1)">public</span> <span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> AsyncService {     </span><span style="color: rgba(0, 128, 0, 1)">/**</span><span style="color: rgba(0, 128, 0, 1)">      * 第一个异步方法，睡眠10s返回字符串      *      * </span><span style="color: rgba(128, 128, 128, 1)">@return</span>      <span style="color: rgba(0, 128, 0, 1)">*/</span>     <span style="color: rgba(0, 0, 255, 1)">public</span> Future&lt;String&gt;<span style="color: rgba(0, 0, 0, 1)"> method() {         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)"> {             Thread.sleep(</span>10 * 1000<span style="color: rgba(0, 0, 0, 1)">);         } </span><span style="color: rgba(0, 0, 255, 1)">catch</span><span style="color: rgba(0, 0, 0, 1)"> (InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(0, 0, 255, 1)">new</span> AsyncResult("I am method"<span style="color: rgba(0, 0, 0, 1)">);     }      </span><span style="color: rgba(0, 128, 0, 1)">/**</span><span style="color: rgba(0, 128, 0, 1)">      * 第三个异步方法，在该异步方法中调用了另外一个异步方法      * </span><span style="color: rgba(128, 128, 128, 1)">@return</span>      <span style="color: rgba(0, 128, 0, 1)">*/</span>     <span style="color: rgba(0, 0, 255, 1)">public</span> Future&lt;String&gt;<span style="color: rgba(0, 0, 0, 1)"> method3(){         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)">{<br>            //睡眠10s             Thread.sleep(</span>10*1000<span style="color: rgba(0, 0, 0, 1)">);             System.out.println(</span><span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">);<br>            //method方法也是睡眠10s             </span><span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">.method();          }</span><span style="color: rgba(0, 0, 255, 1)">catch</span><span style="color: rgba(0, 0, 0, 1)"> (InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(0, 0, 255, 1)">new</span> AsyncResult&lt;&gt;("two async method"<span style="color: rgba(0, 0, 0, 1)">);     } }</span></span></pre> </div> <p><span style="font-size: 16px">上面便是method3方法，以及嵌套在method3方法中的method方法，这两个方法体上均没有标注@Async，只是在这个类上使用了@Async注解，那么该类中的所有方法都是异步的。</span></p> <p><span style="font-size: 16px">执行结果如下，</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px">2022-04-30 15:29:47.711  INFO 16836 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4<span style="color: rgba(0, 0, 0, 1)"> ms com.example.myDemo.service.AsyncService@7e316231 执行时长:</span>20028</span></pre> </div> <p><span style="font-size: 16px">从上面可以看到整个方法的执行时长是20多秒，那么就说明这种<strong>同一个类中的嵌套调用，@Async是失效的</strong>。</span></p> </h1> <h2><span style="font-size: 16px">1、把嵌套方法抽到另一个类中</span></h2> <p><span style="font-size: 16px">这种方式就是把嵌套的异步方法method抽取到另外一个类中，下面我们来看下，</span></p> <p><span style="font-size: 16px">OtherService.java</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px"><span style="color: rgba(0, 0, 255, 1)">package</span><span style="color: rgba(0, 0, 0, 1)"> com.example.myDemo.service;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.Async; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.AsyncResult; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.stereotype.Service; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> java.util.concurrent.Future;  @Service @Async </span><span style="color: rgba(0, 0, 255, 1)">public</span> <span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> OtherAsyncService {     </span><span style="color: rgba(0, 0, 255, 1)">public</span> Future&lt;String&gt;<span style="color: rgba(0, 0, 0, 1)"> method() {         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)"> {             Thread.sleep(</span>10 * 1000<span style="color: rgba(0, 0, 0, 1)">);         } </span><span style="color: rgba(0, 0, 255, 1)">catch</span><span style="color: rgba(0, 0, 0, 1)"> (InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(0, 0, 255, 1)">new</span> AsyncResult("I am method"<span style="color: rgba(0, 0, 0, 1)">);     } }</span></span></pre> </div> <p><span style="font-size: 16px">那么AsyncService.java则变成下面的样子</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px"><span style="color: rgba(0, 0, 255, 1)">package</span><span style="color: rgba(0, 0, 0, 1)"> com.example.myDemo.service;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.beans.factory.annotation.Autowired; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.Async; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.AsyncResult; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.stereotype.Service;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> java.util.concurrent.Future;  @Service @Async </span><span style="color: rgba(0, 0, 255, 1)">public</span> <span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> AsyncService {     </span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">注入OtherService</span> <span style="color: rgba(0, 0, 0, 1)">    @Autowired     </span><span style="color: rgba(0, 0, 255, 1)">private</span><span style="color: rgba(0, 0, 0, 1)"> OtherAsyncService otherAsyncService;          </span><span style="color: rgba(0, 128, 0, 1)">/**</span><span style="color: rgba(0, 128, 0, 1)">      * 第三个异步方法，在该异步方法中调用了另外一个异步方法      * </span><span style="color: rgba(128, 128, 128, 1)">@return</span>      <span style="color: rgba(0, 128, 0, 1)">*/</span>     <span style="color: rgba(0, 0, 255, 1)">public</span> Future&lt;String&gt;<span style="color: rgba(0, 0, 0, 1)"> method3(){         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)">{             Thread.sleep(</span>10*1000<span style="color: rgba(0, 0, 0, 1)">);             System.out.println(</span><span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">);            </span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">调用OtherAsyncService的method方法</span> <span style="color: rgba(0, 0, 0, 1)">            otherAsyncService.method();          }</span><span style="color: rgba(0, 0, 255, 1)">catch</span><span style="color: rgba(0, 0, 0, 1)"> (InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(0, 0, 255, 1)">new</span> AsyncResult&lt;&gt;("two async method"<span style="color: rgba(0, 0, 0, 1)">);     } }</span></span></pre> </div> <p><span style="font-size: 16px">下面看执行的结果，</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px">2022-04-30 15:44:18.914  INFO 16768 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5<span style="color: rgba(0, 0, 0, 1)"> ms com.example.myDemo.service.AsyncService@689927ef 执行时长:</span>10016</span></pre> </div> <p><span style="font-size: 16px">执行时长10s多点，符合预期。</span></p> <h2><span style="font-size: 16px">2、自己注入自己</span></h2> <p><span style="font-size: 16px">这种方式很有意思，我斗胆给它取名为“自己注入自己”，在AsyncService类中注入一个AsyncService的实例，如下</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px"><span style="color: rgba(0, 0, 255, 1)">package</span><span style="color: rgba(0, 0, 0, 1)"> com.example.myDemo.service;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.beans.factory.annotation.Autowired; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.Async; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.scheduling.annotation.AsyncResult; </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.stereotype.Service;  </span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> java.util.concurrent.Future;  @Service @Async </span><span style="color: rgba(0, 0, 255, 1)">public</span> <span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> AsyncService {    </span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">这里注入的是AsyncService的实例<br></span>    @Lazy <span style="color: rgba(0, 0, 0, 1)">    @Autowired     </span><span style="color: rgba(0, 0, 255, 1)">private</span><span style="color: rgba(0, 0, 0, 1)"> AsyncService otherAsyncService;     </span><span style="color: rgba(0, 128, 0, 1)">/**</span><span style="color: rgba(0, 128, 0, 1)">      * 第一个异步方法，睡眠10s返回字符串      *      * </span><span style="color: rgba(128, 128, 128, 1)">@return</span>      <span style="color: rgba(0, 128, 0, 1)">*/</span>     <span style="color: rgba(0, 0, 255, 1)">public</span> Future&lt;String&gt;<span style="color: rgba(0, 0, 0, 1)"> method() {         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)"> {             Thread.sleep(</span>10 * 1000<span style="color: rgba(0, 0, 0, 1)">);         } </span><span style="color: rgba(0, 0, 255, 1)">catch</span><span style="color: rgba(0, 0, 0, 1)"> (InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(0, 0, 255, 1)">new</span> AsyncResult("I am method"<span style="color: rgba(0, 0, 0, 1)">);     }     </span><span style="color: rgba(0, 128, 0, 1)">/**</span><span style="color: rgba(0, 128, 0, 1)">      * 第三个异步方法，在该异步方法中调用了另外一个异步方法      * </span><span style="color: rgba(128, 128, 128, 1)">@return</span>      <span style="color: rgba(0, 128, 0, 1)">*/</span>     <span style="color: rgba(0, 0, 255, 1)">public</span> Future&lt;String&gt;<span style="color: rgba(0, 0, 0, 1)"> method3(){         </span><span style="color: rgba(0, 0, 255, 1)">try</span><span style="color: rgba(0, 0, 0, 1)">{             Thread.sleep(</span>10*1000<span style="color: rgba(0, 0, 0, 1)">);             System.out.println(</span><span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">);             otherAsyncService.method();          }</span><span style="color: rgba(0, 0, 255, 1)">catch</span><span style="color: rgba(0, 0, 0, 1)"> (InterruptedException e) {             e.printStackTrace();         }         </span><span style="color: rgba(0, 0, 255, 1)">return</span> <span style="color: rgba(0, 0, 255, 1)">new</span> AsyncResult&lt;&gt;("two async method"<span style="color: rgba(0, 0, 0, 1)">);     } }</span></span></pre> </div> <p><span style="font-size: 16px">小伙伴们注意，我是在AsyncService类中又注入了一个AsyncService的实例，在method3方法中调用的是AsyncSerevice的方法method，要区别于下面的调用方式</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px"> <span style="color: rgba(0, 0, 255, 1)">this</span>.method();</span></pre> </div> <p><span style="font-size: 16px">下面看下执行结果，</span></p> <div class="cnblogs_code"> <pre><span style="font-size: 16px">2022-04-30 15:55:30.635  INFO 9788 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5<span style="color: rgba(0, 0, 0, 1)"> ms com.example.myDemo.service.AsyncService@2ac186f8 执行时长:</span>10015</span></pre> </div> <p><span style="font-size: 16px">好了，我们看到执行时长为10s多点，也就是说异步是生效的，在这种方式中要注意<strong>注入的对象必须添加@Lazy注解，</strong>否则启动会报错哦。</span></p> </h1> <p><span style="font-size: 16px">上面已经把嵌套使用的误区和解决方式已经总结完了，下面到了要揭开@Async面纱的时候了，最好的方式是debug，看下面@Async的debug的过程</span></p> <p><span style="font-size: 16px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/340695095f44d84449ec95ecf29327f8.jpg" alt="springboot：异步注解@Async的前世今生_在线工具"></span></p> <p><span style="font-size: 16px"> </span></p> <p><span style="font-size: 16px">可以看到在AsyncController中asyncService是一个代理对象，且使用的方式是cglib，那么也就是会把其中的方法进行代理，类似下面的代码</span></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1); font-size: 16px">before(); method3(); after();</span></pre> </div> <p><span style="font-size: 16px">也就是对method3进行了代理，这里的代理指的是把mthod3方法封装成一个task，交给线程池去执行，那么在method3中的this.method()这句调用，也就是普通调用了，是同步的，为什么这样说，因为这里的this代表的是AsyncService这个实例对象，</span></p> <p><span style="font-size: 16px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/9b94c7c3b2308671170d4c8fb7775007.jpg" alt="springboot：异步注解@Async的前世今生_在线工具"></span></p> <p><span style="font-size: 16px">但是如果换成"自己注入自己的方式"，例如下图，</span></p> <p><span style="font-size: 16px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/ec017ba818769b82952329be5d406303.jpg" alt="springboot：异步注解@Async的前世今生_在线工具"></span></p> <p><span style="font-size: 16px">可以看到还是一个AsyncService的cglib代理对象，所以完美解决了嵌套调用的问题。</span></p> </h1> <p><span style="font-size: 16px">本文分析了@Async注解的实现原理及如何使用正确使用嵌套调用，</span></p> <p><span style="font-size: 16px">1、@Async注解底层使用的是代理，标记为@Async所在的类在实际调用时是一个代理类；</span></p> <p><span style="font-size: 16px">2、合理使用@Async方法的嵌套，可以把嵌套方法抽到另外一个类中；</span></p> <p><span style="font-size: 16px">3、如果在本类中使用嵌套方法，那么需要自己注入自己，切记加上@Lazy注解；</span></p> <p><span style="font-size: 16px"> </span></p> <p><span style="font-size: 16px; background-color: rgba(255, 255, 255, 1); color: rgba(255, 0, 0, 1)"><strong>推荐阅读</strong></span></p> <p><span style="font-size: 16px"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/teach/p/14127024.html"  target="_blank"  rel="nofollow">springboot：异步调用@Async</a></span></p> <p><span style="font-size: 16px"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/teach/p/15169153.html"  target="_blank"  rel="nofollow">springboot：使用异步注解@Async获取执行结果的坑</a></span></p> <p><span style="font-size: 16px"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/teach/p/15202284.html"  target="_blank"  rel="nofollow">springboot：嵌套使用异步注解@Async还会异步执行吗</a></span></p> <p><span style="font-size: 16px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/4c9168960190bc229a4cfced32748cd3.jpg" alt="springboot：异步注解@Async的前世今生_在线工具"></span></p> <p><span style="font-size: 16px"> </span></p> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-24283.htm">动物疫苗使用时的注意事项包括 动物疫苗使用时的注意事项包括哪些</a></p>
+                                                        <p>下一个：<a href="/news/article-24749.htm">动物医院实验室常见设备仪器 动物医院实验室常见设备仪器有哪些</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="11月20日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐">11月20日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-free-v2ray.htm" title="10月31日 | Stair Node节点订阅每天更新22.2M/S免费节点订阅链接，付费节点订阅推荐">10月31日 | Stair Node节点订阅每天更新22.2M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-node-share.htm" title="10月23日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">10月23日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-23368.htm" title="SpringBoot中使用RestTemplate发送文件流，以及读取zip压缩包中文件的方法">SpringBoot中使用RestTemplate发送文件流，以及读取zip压缩包中文件的方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-28-free-subscribe-node.htm" title="8月28日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接">8月28日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-node-share.htm" title="10月13日 | Stair Node节点订阅每天更新22.9M/S免费节点订阅链接">10月13日 | Stair Node节点订阅每天更新22.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-node-subscribe.htm" title="9月27日 | Stair Node节点订阅每天更新19.4M/S免费节点订阅链接">9月27日 | Stair Node节点订阅每天更新19.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-v2ray-subscribe.htm" title="11月23日 | Stair Node节点订阅每天更新18.8M/S免费节点订阅链接，付费节点订阅推荐">11月23日 | Stair Node节点订阅每天更新18.8M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-clash-v2ray-ss-ssr.htm" title="11月8日 | Stair Node节点订阅每天更新21.5M/S免费节点订阅链接，付费节点订阅推荐">11月8日 | Stair Node节点订阅每天更新21.5M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-subscribe-node.htm" title="11月11日 | Stair Node节点订阅每天更新21.5M/S免费节点订阅链接，付费节点订阅推荐">11月11日 | Stair Node节点订阅每天更新21.5M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/stairnode/google-map.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
