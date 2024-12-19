@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-27999.htm" />
+    <title>Snort中pcre和正则表达式的使用</title>
+        <meta name="description" content="1. 题目描述 If snort see two packets in a TCP flow with  first packet has “login” or “Initial” in payloa" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/">Stair Node</a>
+                        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><span>关于</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span>联系</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('__ADDON__/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Snort中pcre和正则表达式的使用</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				</h1> <h2 id="1-题目描述">1. 题目描述</h2> <p>If snort see two packets in a TCP flow with</p> <ul> <li>first packet has “login” or “Initial” in payload, destination port is 3399;</li> <li>and second packet has a “IPv4Address:Port”string(E.g. 123.45.6.7:8080) in payload. destination port is 3399;</li> <li>output an alert with msg “bot founded” and sid 1000001</li> </ul> <h2 id="2-解决方案">2. 解决方案</h2> <p>题目要求检测包含两个包的特定流，需要通过设置标记位，即<strong>flowbits</strong>来实现。另外，题目中均要求检测特定的字符串或模式，所以还需要在<strong>pcre</strong>字段中通过<strong>正则表达式</strong>实现。</p> <h3 id="21-第一条检测规则">2.1 第一条检测规则</h3> <ul> <li> <p><strong>匹配特定字符串</strong></p> <pre><code>pcre:"/login|Initial/";</code></pre> <p>正则表达式的两端需要加上限界符<code>/</code>。</p> </li> <li> <p><strong>设置标志位，同时不发出警报。</strong></p> <pre><code>flowbits:set,bot_founded;flowsbits:noalert;</code></pre> </li> </ul> <h3 id="22-第二条检测规则">2.2 第二条检测规则</h3> <h4 id="221-匹配模式ipv4addressport"><strong>2.2.1 匹配模式<code>IPv4Address:Port</code></strong></h4> <ul> <li> <p><strong>IPv4Address</strong></p> <p>IPv4地址使用点分十进制表示时，分为4组，每组的范围均为[0,255]。即从0.0.0.0到255.255.255.255。</p> <p>我们先分析单独一组的特点：</p> <table> <thead> <tr> <th style="text-align: center">区间</th> <th style="text-align: center">限制</th> <th style="text-align: center">表示</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">0~99</td> <td style="text-align: center">没有任何限制</td> <td style="text-align: center"><code>\d{1,2}</code></td> </tr> <tr> <td style="text-align: center"><strong>1</strong>00~<strong>1</strong>99</td> <td style="text-align: center">后两位也没有任何限制</td> <td style="text-align: center"><code>1\d{2}</code></td> </tr> <tr> <td style="text-align: center"><strong>2</strong>00~<strong>2</strong>49</td> <td style="text-align: center">十位限制在0~4，个位没有限制</td> <td style="text-align: center"><code>2[0-4]\d</code></td> </tr> <tr> <td style="text-align: center"><strong>25</strong>0~<strong>25</strong>5</td> <td style="text-align: center">个位限制在0~5</td> <td style="text-align: center"><code>25[0-5]</code></td> </tr> </tbody> </table> <p>可以发现表格中前两种情况可以合并为<code>1?\d{1,2}</code>，所以可以用<code>25[0-5]|2[0-4]\d|1?\d{1,2}</code>来匹配0~255；</p> <p>将其作为一个<strong>分组</strong>，再考虑到<code>.</code>，我们可以写出如下正则表达式匹配IPv4地址：</p> <p><code>((25[0-5]|2[0-4]\d|1?\d{1,2})\.){3}(25[0-5]|2[0-4]\d|1?\d{1,2})</code></p> </li> </ul> <hr/> <blockquote> <p><strong>值得说明的是：</strong></p> <ol> <li> <p>这里我们认为数字前出现填充<code>0</code>的情况与非填充状态等价：</p> <p>如：<code>192.01.00.1</code>等价于<code>192.1.0.1</code>。</p> <p>这种情况下才能使用<code>\d{1,2}</code>，因为可能会出现<code>00</code>的情况。</p> </li> <li> <p>正则表达式的<strong>短路性质</strong>：</p> <p>当<code>|</code>运算符分隔的多个表达式有一个匹配成功时，该表达式之后的表达式将不会继续匹配。</p> <p>如：<code>A|B|C|D</code>，<code>B</code>匹配成功了，将不会再看<code>C</code>和<code>D</code>。</p> <p>所以上面匹配IPv4地址时，我们单独一个分组写成<code>25[0-5]|2[0-4]\d|1?\d{1,2}</code>而不是<code>1?\d{1,2}|2[0-4]\d|25[0-5]</code>。</p> <p>后者匹配<code>255</code>时，只会匹配到<code>25</code>和<code>5</code>，而不会匹配到<code>255</code>：</p> <div align="center"><img decoding="async" src="https://s1.ax1x.com/2022/03/29/qyJR3Q.png" alt="Snort中pcre和正则表达式的使用" width="80%"/></div> <p>同样后者构造的正则表达式去匹配<code>255.255.255.255</code>，只会匹配到<code>255.255.255.25</code>，缺少最后一个<code>5</code>：</p> <div align="center"><img decoding="async" src="https://s1.ax1x.com/2022/03/29/qyJU9e.png" alt="Snort中pcre和正则表达式的使用" width="80%"/></div> <p>因为它匹配到最后一组的<code>25</code>时就判定匹配成功，直接跳到末尾，结束匹配。而前面几组<code>255</code>正确匹配的原因是：如果只匹配<code>25</code>，	发现剩下的<code>5</code>和<code>.</code>不匹配，之后会进行回溯，继续检查后面的条件，发现<code>255</code>匹配成功且<code>.</code>也匹配成功，不再回溯。</p> </li> </ol> </blockquote> <ul> <li> <p><strong>Port</strong></p> <p>端口号的范围是0~65535，我们同样可以分成不同的区间来匹配端口号。</p> <table> <thead> <tr> <th style="text-align: center">区间</th> <th style="text-align: center">限制</th> <th style="text-align: center">表示</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">0~9999</td> <td style="text-align: center">没有任何限制</td> <td style="text-align: center"><code>\d{1,4}</code></td> </tr> <tr> <td style="text-align: center"><strong>1</strong>0000~<strong>5</strong>9999</td> <td style="text-align: center">后四位没有任何限制</td> <td style="text-align: center"><code>[1-5]\d{4}</code></td> </tr> <tr> <td style="text-align: center"><strong>6</strong>0000~<strong>6</strong>4999</td> <td style="text-align: center">千位限制在0~4，后三位没有任何限制</td> <td style="text-align: center"><code>6[0-4]\d{3}</code></td> </tr> <tr> <td style="text-align: center"><strong>65</strong>000~<strong>65</strong>499</td> <td style="text-align: center">百位限制在0~4，后两位没有任何限制</td> <td style="text-align: center"><code>65[0-4]\d{2}</code></td> </tr> <tr> <td style="text-align: center"><strong>655</strong>00~<strong>655</strong>29</td> <td style="text-align: center">十位限制在0~4，个位没有任何限制</td> <td style="text-align: center"><code>655[0-2]\d</code></td> </tr> <tr> <td style="text-align: center"><strong>6553</strong>0~<strong>6553</strong>5</td> <td style="text-align: center">个位限制在0~5</td> <td style="text-align: center"><code>6553[0~5]</code></td> </tr> </tbody> </table> <p>同样，我们可以将表格前两种情况合并为<code>[1-5]?\d{1,4}</code>。结合上面提到的短路性质，我们可以写出最终用于匹配端口号的正则表达式：</p> <p><code>6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]?\d{1,4}</code></p> </li> </ul> <h4 id="222-检查标志位">2.2.2 检查标志位</h4> <pre><code>flowbits:isset,bot_founded;</code></pre> <h2 id="3-检测规则">3. 检测规则</h2> <p>通过上述分析，我们可以写出如下检测规则：</p> <pre><code>alert tcp any any -&gt; any 3399 (pcre:"/login|Initial/";flowbits:set,bot_founded;flowbits:noalert;sid:1000000) alert tcp any any -&gt; any 3399 (msg:"bot founded";pcre:"/((25[0-5]|2[0-4]\d|1?\d{1,2})\.){3}(25[0-5]|2[0-4]\d|1?\d{1,2}):(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]?\d{1,4})/";flowbits:isset,bot_founded;sid:1000001)</code></pre> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-27998.htm">docker-compose ports 与 expose 的区别</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-high-speed-nodes.htm" title="9月29日 | Stair Node节点订阅每天更新19.6M/S免费节点订阅链接">9月29日 | Stair Node节点订阅每天更新19.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-node-subscribe.htm" title="10月29日 | Stair Node节点订阅每天更新22.2M/S免费节点订阅链接，付费节点订阅推荐">10月29日 | Stair Node节点订阅每天更新22.2M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-25213.htm" title="宠物猫疫苗接种时间表图片高清（宠物猫疫苗接种时间表图片高清大图）">宠物猫疫苗接种时间表图片高清（宠物猫疫苗接种时间表图片高清大图）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-v2ray.htm" title="10月10日 | Stair Node节点订阅每天更新18.2M/S免费节点订阅链接">10月10日 | Stair Node节点订阅每天更新18.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-18-node-share.htm" title="9月18日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接">9月18日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-node-share-links.htm" title="8月21日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接">8月21日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19233.htm" title="egg.js在Nginx docker中提示 Session ID unknown">egg.js在Nginx docker中提示 Session ID unknown</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-node-share-links.htm" title="11月9日 | Stair Node节点订阅每天更新19.1M/S免费节点订阅链接，付费节点订阅推荐">11月9日 | Stair Node节点订阅每天更新19.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-node-share-links.htm" title="10月12日 | Stair Node节点订阅每天更新22.5M/S免费节点订阅链接">10月12日 | Stair Node节点订阅每天更新22.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-29-node-share.htm" title="8月29日 | Stair Node节点订阅每天更新18.1M/S免费节点订阅链接">8月29日 | Stair Node节点订阅每天更新18.1M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/stairnode/google-map.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
