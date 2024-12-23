@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-28927.htm" />
+    <title>vue实现无限消息无缝滚动_vue.js</title>
+        <meta name="description" content="本文实例为大家分享了vue实现无限消息无缝滚动的具体代码，供大家参考，具体内容如下 一、html  &lt;div class="table_box"&gt;     &lt;div class="t" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/">Stair Node</a>
+                        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><span>关于</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span>联系</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('__ADDON__/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue实现无限消息无缝滚动_vue.js</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>本文实例为大家分享了vue实现无限消息无缝滚动的具体代码，供大家参考，具体内容如下</p> <p><strong>一、html</strong></p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div class="table_box"&gt;     &lt;div class="table_title"&gt;      &lt;div class="table_title_item"&gt;告警时间&lt;/div&gt;      &lt;div class="table_title_item"&gt;所属集中器&lt;/div&gt;      &lt;div class="table_title_item" style="width:40%"&gt;内容&lt;/div&gt;     &lt;/div&gt;     &lt;div class="table_content"&gt;     &lt;div :class="{anim:animate}" @mouseenter="Stop()" @mouseleave="Up()"&gt;      &lt;div class="table_item" v-for="(item, index) in chart4" :key="index"&gt;       &lt;div class="table_colum" :title="item.wtime"&gt;{{item.wtime}}&lt;/div&gt;       &lt;div class="table_colum" :title="item.terminalName"&gt;{{item.terminalName}}&lt;/div&gt;       &lt;div class="table_colum2" :title="item.remark"&gt;{{item.remark}}&lt;/div&gt;     &lt;/div&gt;     &lt;/div&gt;     &lt;/div&gt;  &lt;/div&gt;</pre> </div> <p><strong>二、style</strong></p> <div class="ay1code"> <pre class="brush:css;">.table_box{      padding:10px;  }  .table_title_item{      width:30%;      height:28px;      color:#fff;      color:#01C0C3;      font-size: 14px;      line-height: 28px;      text-align: center;  }  .table_content{      margin:5px;      height:28vh;      overflow: hidden;  }  .table_item{      width:100%;      // 设定行高      height:30px;      line-height: 30px;      display: flex;      color:#01C0C3;      font-size:14px;  }  .anim{      // 设定滚动      transition: all 0.5s;      margin-top: -30px;//高度等于行高  }  .table_colum{      width:30%;      text-align: center;      // 多出部分省略      overflow: hidden;      text-overflow: ellipsis;      display: -webkit-box;      -webkit-line-clamp: 1; //行数      -webkit-box-orient: vertical;  }  .table_colum2{      width:40%;      text-align: center;      // 多出部分省略      overflow: hidden;      text-overflow: ellipsis;      display: -webkit-box;      -webkit-line-clamp: 1; //行数      -webkit-box-orient: vertical;  }</pre> </div> <p><strong>三、js</strong></p> <div class="ay1code"> <pre class="brush:js;">&lt;script&gt;  export default {      data() {          return {              // 告警滚动部分              chart4: [],              animate: false,              intNum: undefined          }      },      created() {          this.getAlarmDatas()      },      methods: {          // 获取报警数据          getAlarmDatas() {              getAlarmInfo().then(res =&gt; {                  if (res.code === 1 &amp;&amp; res.data.length &gt; 0) {                      this.chart4 = res.data                      this.ScrollUp()                  }              })          },          /** 告警滚动部分 */          ScrollUp() {              // 每次滚动时先清除上次定时器              this.Stop()              let that = this              this.intNum = setInterval(function() {                  that.animate = true // 向上滚动的时候需要添加css3过渡动画                  setTimeout(() =&gt; {                      that.chart4.push(that.chart4[0]) // 将数组的第一个元素添加到数组的                      that.chart4.shift() // 删除数组的第一个元素                      that.animate = false                  }, 500)              }, 2000)          },          // 鼠标移上去停止          Stop() {              clearInterval(this.intNum)          },          // 鼠标移出          Up() {              this.ScrollUp()          }      }  }  &lt;/script&gt;</pre> </div> <p><strong>四、效果</strong></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220423/e32a5c9ff46acf37c62e77108496e705.jpg"></p> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-28924.htm">为什么我们不应该在MySQL SELECT查询中不使用没有GROUP BY子句的非组字段的组函数？</a></p>
+                                                        <p>下一个：<a href="/news/article-29387.htm">沈阳宠物狗免费领养地方（沈阳宠物狗免费领养地方有哪些）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-clash-v2ray-ss-ssr.htm" title="11月15日 | Stair Node节点订阅每天更新19.4M/S免费节点订阅链接，付费节点订阅推荐">11月15日 | Stair Node节点订阅每天更新19.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-node-share-links.htm" title="10月30日 | Stair Node节点订阅每天更新22M/S免费节点订阅链接，付费节点订阅推荐">10月30日 | Stair Node节点订阅每天更新22M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-1-free-subscribe-node.htm" title="10月1日 | Stair Node节点订阅每天更新22.3M/S免费节点订阅链接">10月1日 | Stair Node节点订阅每天更新22.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-node-share-links.htm" title="10月9日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接">10月9日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-free-node-subscribe.htm" title="9月23日 | Stair Node节点订阅每天更新18.3M/S免费节点订阅链接">9月23日 | Stair Node节点订阅每天更新18.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-node-subscribe.htm" title="10月19日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐">10月19日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-node-subscribe.htm" title="12月10日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐">12月10日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-free-high-speed-nodes.htm" title="8月16日 | Stair Node节点订阅每天更新20.5M/S免费节点订阅链接">8月16日 | Stair Node节点订阅每天更新20.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-node-subscribe.htm" title="12月8日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐">12月8日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-25214.htm" title="动物疫苗的使用方法有哪些种类（动物疫苗的使用方法有哪些种类及作用）">动物疫苗的使用方法有哪些种类（动物疫苗的使用方法有哪些种类及作用）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/stairnode/google-map.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
