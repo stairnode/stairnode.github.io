@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-30349.htm" />
+    <title>获取网站后台权限理解</title>
+        <meta name="description" content="文章目录  一、后台常见位置查找   1.1 猜解常用路径 1.2 robots.txt 1.3 访问报错页面 1.4 查看图片相关属性 1.5 CMS指纹识别 1.6 利用谷歌黑语法来查找   二、" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/">Stair Node</a>
+                        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><span>关于</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span>联系</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('__ADDON__/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">获取网站后台权限理解</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_1" rel="nofollow">一、后台常见位置查找</a></li> <li> <ul> <li><a href="#11__2" rel="nofollow">1.1 猜解常用路径</a></li> <li><a href="#12_robotstxt_5" rel="nofollow">1.2 robots.txt</a></li> <li><a href="#13__8" rel="nofollow">1.3 访问报错页面</a></li> <li><a href="#14__11" rel="nofollow">1.4 查看图片相关属性</a></li> <li><a href="#15_CMS_14" rel="nofollow">1.5 CMS指纹识别</a></li> <li><a href="#16__19" rel="nofollow">1.6 利用谷歌黑语法来查找</a></li> </ul> </li> <li><a href="#_37" rel="nofollow">二、利用工具查找</a></li> <li> <ul> <li><a href="#21__38" rel="nofollow">2.1 爬虫扫描</a></li> <li><a href="#22__41" rel="nofollow">2.2 字典爆破后台路径</a></li> </ul> </li> <li><a href="#23__44" rel="nofollow">2.3 端口扫描</a></li> </ul> </div> </h1> <h2> <a id="11__2" rel="nofollow"></a>1.1 猜解常用路径</h2> <ul> <li>Admin、admin_login.asp、admin_login.php部分网站默认都是admin目录后台。虽然开发人员安全意识逐渐完善，但还是有相当一部分网站管理员直接就用默认的路径。我们找后台时从常见的默认界面入手往往会有意外收获。</li> </ul> <h2> <a id="12_robotstxt_5" rel="nofollow"></a>1.2 robots.txt</h2> <ul> <li>robots.txt是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎，此网站中的哪些内容是不能被搜索引擎获取的，哪些是可以被获取的。管理员们为了让搜索引擎不要收录admin页面而在robots.txt里面做了限制规则。但是这个robots.txt页面，谁都可以看，于是我们就可以比较清楚的了解网站的结构，比如admin目录啊、include目录啊等等。</li> </ul> <h2> <a id="13__8" rel="nofollow"></a>1.3 访问报错页面</h2> <ul> <li>当我们正常浏览网页找不到后台时可以尝试去请求一些网站不存在的页面，让网页显示报错信息有时也能看到网站的真实路径。</li> </ul> <h2> <a id="14__11" rel="nofollow"></a>1.4 查看图片相关属性</h2> <ul> <li>当进入网站后，可以先随意点击下几张图片的属性，看看它们的文件路径是否可以加以利用。因为有些旧网站会直接把编辑器放在后台目录后面，所有当我们查看图片属性的时候会将网站路径上传点暴露出来。</li> </ul> <h2> <a id="15_CMS_14" rel="nofollow"></a>1.5 CMS指纹识别</h2> <ul> <li> <p>CMS（Content Management System），意为”内容管理系 统”。CMS只需要修改几个静态模版，就可以当成一个网站使用。可以利用在线CMS指纹识别、云悉识别等网站来进行CMS识别 。</p> </li> <li> <p>比如像dede，后台就是/dede。除此以外，还有很多开源程序，如Joomla就是/administrator，wordpress就是/wp-admin。国内的CMS通常就是/admin和/manage，要么就是/login，这样命名后台主要还是管理员登陆起来比较方便。如果你知道了这是个什么CMS，但是却不知道他的后台登陆入口，也可以去官网或者一些下载站下载源码，看看都有哪些路径。</p> </li> </ul> <h2> <a id="16__19" rel="nofollow"></a>1.6 利用谷歌黑语法来查找</h2> <ul> <li>Google对于搜索的关键字提供了多种语法，合理使用这些语法，将使我们得到的搜索结果更加精确。当然，Google允许用户使用这些语法的目的是为了获得更加精确的结果，但是黑客却可以利用这些语法构造出特殊的关键字，从而搜索到我们想要的关键信息。</li> </ul> <pre><code>搜索网站后台地址 site:目标网站 intitle:管理/后台/登陆/管理员 site:目标网站 inurl:login/admin/guanlidenglu site: 目标网站 intext: 管理/后台/登陆/管理员  搜索网站敏感信息 intitle:”Index of” .sh_history intitle:”index of” etc/shadow intitle:”index of” spwd  搜索网站特定文件 site:目标网站 filetype:doc site:目标网站 filetype:xls site:目标网站 filetype:pdf </code></pre> </h1> <h2> <a id="21__38" rel="nofollow"></a>2.1 爬虫扫描</h2> <ul> <li>利用AWVS、BurpSuite自带的爬虫功能访问网站首页从而获取网站的敏感文件敏感目录等信息。爬取网站目录原理可以这样理解:我们在首页A中存在爬取A的所有 URL链接B，C，D…接着继 续爬取B ，C， D网页中的URL链接，层层递进，直到将所有URL链接爬取完成。之后便能看到我们需要的信息。</li> </ul> <h2> <a id="22__41" rel="nofollow"></a>2.2 字典爆破后台路径</h2> <ul> <li>当进行完爬虫扫描后，发现目录中没有我们需要的网站后台地址。也许这后台地址并没有像我们想象中被放置链接中或者爬行深度不够等等原因。尝试用后台字典来爆破后台地址。常用的工具有dirsearch、御剑等工具。我们是否能成功跑出后台取决于字典是否足够强大。</li> </ul> </h1> <ul> <li>还有一些管理员喜欢把服务器划分在一个比较大的端口号，然后单独把网站后台地址放置其中。对于这种情况，可以通过扫描网站来获取端口信息，然后逐 一对其进行访问浏览，看看会不会后台地址被放置在某个端口。对于端口的扫描，比较推荐的是Nmap。有些比较狡猾的管理员不放心把后台地址放到当前站点页面，就喜欢把后台地址放置到子域名当中。可以通过对其子域名收集，说不定就有你想要的后台地址信息。</li> </ul> </div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-29870.htm">【TypeScript】TypeScript 与 JavaScript 有何不同？</a></p>
+                                                        <p>下一个：<a href="/news/article-30353.htm">宠物店打疫苗多少钱一针（宠物店打疫苗多少钱一针啊）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-node-subscribe.htm" title="9月16日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接">9月16日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-subscribe-node.htm" title="10月21日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐">10月21日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-20607.htm" title="兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）">兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-20146.htm" title="怎么样正确使用动物疫苗视频（怎么样正确使用动物疫苗视频教程）">怎么样正确使用动物疫苗视频（怎么样正确使用动物疫苗视频教程）</a></li>
+                        <li class="py-2"><a href="/news/article-21063.htm" title="宠物粮图片怎么设计（宠物粮是什么做的）">宠物粮图片怎么设计（宠物粮是什么做的）</a></li>
+                        <li class="py-2"><a href="/news/article-29870.htm" title="【TypeScript】TypeScript 与 JavaScript 有何不同？">【TypeScript】TypeScript 与 JavaScript 有何不同？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-25-free-node-subscribe-links.htm" title="8月25日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接">8月25日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-node-subscribe.htm" title="12月10日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐">12月10日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-v2ray.htm" title="12月24日 | Stair Node节点订阅每天更新18.1M/S免费节点订阅链接，付费节点订阅推荐">12月24日 | Stair Node节点订阅每天更新18.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-node-subscribe.htm" title="12月8日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐">12月8日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/stairnode/google-map.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
