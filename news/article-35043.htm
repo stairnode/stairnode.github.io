@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-35043.htm" />
+    <title>VS2017的C++开发心得（一）VS的项目创建</title>
+        <meta name="description" content="从2017开始VisualStudio开放了免费版本2017community版本，也不用再绞尽脑汁去找这款神一般的IDE，直接去官网下载安装即可。安装组件如下：  工作负载中只选择C++的桌面开发就" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/">Stair Node</a>
+                        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><span>关于</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span>联系</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('__ADDON__/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">VS2017的C++开发心得（一）VS的项目创建</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>从2017开始VisualStudio开放了免费版本2017community版本，也不用再绞尽脑汁去找这款神一般的IDE，直接去官网下载安装即可。安装组件如下：</p> <p><img fetchpriority="high" decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/ab657d5521ea55b55d6edc0b7ecfea4d.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"><img decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/c0f49923d6cabe0478e3d9330037f92f.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"><img decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/13209bff4c78eb08e23cc3908053d093.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"></p> <p>工作负载中只选择C++的桌面开发就行，不需要的会很占硬盘而且是很多的C盘硬盘，以后有需要可以随时增加。</p> <p>打开后出现以下界面：</p> <p><img loading="lazy" decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/80f1d598f7325764126650c151fcac9e.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"></p> <p>大多数区域在没有创建解决方案的时候是没有作用的，在创建解决方案后再详细说每个区域的功能。</p> <p>在这里可以通过快捷按键里面的“创建新项目”点击创建第一个项目，或者在最上面的宝贝一栏里选择第一个文件》新建》项目，会出现下面的界面：</p> <p><img loading="lazy" decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/be831454fd287253f2d43dcfcaef3349.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"></p> <p>直接在其他里面选择空项目点击确定，出现如下就创建好了：</p> <p><img loading="lazy" decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/f5c9f66c60a1bf99c553c32862df207d.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"></p> <p>右边解决方案资源管理器是陪伴你项目一辈子的东西，要是不小心隐藏了，别哭，可以在宝贝一栏的视图里面可以找到它：</p> <p><img loading="lazy" decoding="async" class="has" src="http://img.555519.xyz/uploads/20221207/71795697baed0e153bf1264d3037aae5.jpg" alt="VS2017的C++开发心得（一）VS的项目创建"></p> <p>圈出来的这三个要研究。好，项目创建完成。</p> </div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-35042.htm">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></p>
+                                                        <p>下一个：<a href="/news/article-35559.htm">Shiro&#8211;解决is not eligible for getting processed by all BeanPostProcessors</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-node-subscribe.htm" title="9月16日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接">9月16日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-high-speed-nodes.htm" title="12月31日 | Stair Node节点订阅每天更新20M/S免费节点订阅链接，付费节点订阅推荐">12月31日 | Stair Node节点订阅每天更新20M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-31801.htm" title="动物疫苗质量检验机构（动物疫苗检测找哪个部门）">动物疫苗质量检验机构（动物疫苗检测找哪个部门）</a></li>
+                        <li class="py-2"><a href="/news/article-20607.htm" title="兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）">兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-free-node-subscribe-links.htm" title="11月4日 | Stair Node节点订阅每天更新22.7M/S免费节点订阅链接，付费节点订阅推荐">11月4日 | Stair Node节点订阅每天更新22.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-node-share.htm" title="10月23日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">10月23日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-clash-v2ray-ss-ssr.htm" title="9月7日 | Stair Node节点订阅每天更新21.3M/S免费节点订阅链接">9月7日 | Stair Node节点订阅每天更新21.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-clash-v2ray-ss-ssr.htm" title="11月15日 | Stair Node节点订阅每天更新19.4M/S免费节点订阅链接，付费节点订阅推荐">11月15日 | Stair Node节点订阅每天更新19.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-33207.htm" title="开个宠物粮加工厂怎么样赚钱吗（宠物粮食加工厂需要执照吗）">开个宠物粮加工厂怎么样赚钱吗（宠物粮食加工厂需要执照吗）</a></li>
+                        <li class="py-2"><a href="/news/article-28463.htm" title="标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）">标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/stairnode/google-map.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
