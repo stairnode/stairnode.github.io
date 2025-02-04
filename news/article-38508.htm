@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://stairnode.github.io/news/article-38508.htm" />
     <title>Unsafe类学习</title>
         <meta name="description" content="Unfase为我们提供了访问底层的机制，仅供java核心类库使用。 因此普通用户程序无法直接获取其实例，且unsafe的构造方法为私有的，但是我们可以通过反射获取。 1.获取unsafe Unsafe" />
         <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-38508.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="Unsafe类学习" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/c7a5953a26011f9ba1f081adf39fbaf1.webp" />
+        <meta property="og:release_date" content="2025-01-10T10:43:34" />
+    <meta property="og:updated_time" content="2025-01-10T10:43:34" />
+        <meta property="og:description" content="Unfase为我们提供了访问底层的机制，仅供java核心类库使用。 因此普通用户程序无法直接获取其实例，且unsafe的构造方法为私有的，但是我们可以通过反射获取。 1.获取unsafe Unsafe" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Unsafe类学习">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -48,7 +77,7 @@
             </div>
         </div>
     </nav>
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('__ADDON__/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -81,16 +110,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-subscribe-node.htm" title="12月27日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">12月27日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-21984.htm" title="宠物猫疫苗可以自己打么（宠物猫打疫苗可以自己打吗）">宠物猫疫苗可以自己打么（宠物猫打疫苗可以自己打吗）</a></li>
-                        <li class="py-2"><a href="/news/article-26599.htm" title="动物疫苗注射部位图片高清（动物疫苗的使用方法及注意事项）">动物疫苗注射部位图片高清（动物疫苗的使用方法及注意事项）</a></li>
-                        <li class="py-2"><a href="/news/article-40011.htm" title="寓意八方来财的店名（寓意八方来财的店名大全）">寓意八方来财的店名（寓意八方来财的店名大全）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="11月20日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐">11月20日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-node-subscribe.htm" title="10月19日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐">10月19日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-18825.htm" title="宠物领养网免费同城送货（宠物领养免费送到家）">宠物领养网免费同城送货（宠物领养免费送到家）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-14-node-share-links.htm" title="12月14日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐">12月14日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-22-free-node-subscribe-links.htm" title="12月22日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐">12月22日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-12-node-share-links.htm" title="1月12日 | Stair Node节点订阅每天更新18.1M/S免费节点订阅链接，付费节点订阅推荐">1月12日 | Stair Node节点订阅每天更新18.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-free-v2ray-subscribe.htm" title="12月6日 | Stair Node节点订阅每天更新18.7M/S免费节点订阅链接，付费节点订阅推荐">12月6日 | Stair Node节点订阅每天更新18.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-clash-v2ray-ss-ssr.htm" title="1月14日 | Stair Node节点订阅每天更新19.9M/S免费节点订阅链接，付费节点订阅推荐">1月14日 | Stair Node节点订阅每天更新19.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-27535.htm" title="天照爱宠动物医院简介（天照宠物医院大兴店）">天照爱宠动物医院简介（天照宠物医院大兴店）</a></li>
+                        <li class="py-2"><a href="/news/article-44464.htm" title="宠物美容师干什么（宠物美容师有前景吗）">宠物美容师干什么（宠物美容师有前景吗）</a></li>
+                        <li class="py-2"><a href="/news/article-36548.htm" title="猫粮制作工艺流程视频（猫粮制作方法及原料）">猫粮制作工艺流程视频（猫粮制作方法及原料）</a></li>
+                        <li class="py-2"><a href="/news/article-29869.htm" title="PHP对象继承">PHP对象继承</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-v2ray.htm" title="11月18日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">11月18日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-44463.htm" title="如何从JavaScript对象中删除属性">如何从JavaScript对象中删除属性</a></li>
+                        <li class="py-2"><a href="/news/article-31801.htm" title="动物疫苗质量检验机构（动物疫苗检测找哪个部门）">动物疫苗质量检验机构（动物疫苗检测找哪个部门）</a></li>
+                        <li class="py-2"><a href="/news/article-35043.htm" title="VS2017的C++开发心得（一）VS的项目创建">VS2017的C++开发心得（一）VS的项目创建</a></li>
                     </ul>
     </div>
 </div>
@@ -102,16 +131,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">38</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
