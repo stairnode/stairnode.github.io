@@ -100,6 +100,7 @@
                       				  				  				<div id="content_views" class="markdown_views prism-dracula"> </h1> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#transientstatic_0" rel="nofollow">不序列的字段：transient和static目录</a></li> <li><a href="#_5" rel="nofollow">前言</a></li> <li><a href="#_8" rel="nofollow">一、是什么？</a></li> <li><a href="#_14" rel="nofollow">二、使用步骤</a></li> <li><a href="#_32" rel="nofollow">总结</a></li> </ul> </div> </h1> <p>接上一篇</p> </h1> <p>如果我们有一个需求：要求对象中有些属性不需要序列化<br /> 而且实际开发中确实也有这种情况<br /> 不是所有的对象属性都需要序列化的</p> </h1> <p>假如我们有一个商品类<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/35a1e21ab9d9066d946b2597b65e61a1.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 解决办法：<br /> 方式1： 如果某个属性不需要序列化，可以在属性的前面加一个关键字：transient<br /> 方式2：如果某个属性是static，那么也不会序列化。因为静态的变量不属于某个对象，而是整个类的，所以不需要随着对象的序列化而序列化。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/977d0d1667d9aa379b4eb1ef343ee302.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 然后再把系列化的代码写一遍测试一下<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/bf40f9d2e20b932256acc96fcf042a18.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/d95376e83d0e90d4279f9a3e0ba7b6f6.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 由此可见，sale字段确实没有被序列化</p> <p>我们再看第二种方式，用静态修饰属性<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/b91ee1e2b0aa95d2e4c6b7af612ddcc7.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/a29495347ec1e2c0278239cbb36ce31b.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"></p> </h1> <p>如果在序列化的过程中有些属性不需要序列化的解决办法<br /> 方式1： 如果某个属性不需要序列化，可以在属性的前面加一个关键字：transient<br /> 方式2：如果某个属性是static，那么也不会序列化。因为静态的变量不属于某个对象，而是整个类的，所以不需要随着对象的序列化而序列化。</p> </div> 			
                         <div class="col-md-12 mt-5">
                                                         <p>上一个：<a href="/news/article-54156.htm">win11系统字体显示不全怎么办</a></p>
+                                                        <p>下一个：<a href="/news/article-54714.htm">ThreadLocal原理及使用场景</a></p>
                                                     </div>
 
                                         </div>
@@ -110,16 +111,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-v2ray-subscribe.htm" title="12月4日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐">12月4日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share-links.htm" title="11月28日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接，付费节点订阅推荐">11月28日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe.htm" title="12月1日 | Stair Node节点订阅每天更新18.7M/S免费节点订阅链接，付费节点订阅推荐">12月1日 | Stair Node节点订阅每天更新18.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-42474.htm" title="宠物美容店投资多少钱啊（宠物美容开店多少钱）">宠物美容店投资多少钱啊（宠物美容开店多少钱）</a></li>
-                        <li class="py-2"><a href="/news/article-37039.htm" title="宠物粮食加工厂设备有哪些品牌好一点（宠物粮食加工厂设备有哪些品牌好一点的）">宠物粮食加工厂设备有哪些品牌好一点（宠物粮食加工厂设备有哪些品牌好一点的）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-node-share-links.htm" title="12月28日 | Stair Node节点订阅每天更新20.4M/S免费节点订阅链接，付费节点订阅推荐">12月28日 | Stair Node节点订阅每天更新20.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-v2ray.htm" title="11月30日 | Stair Node节点订阅每天更新21.8M/S免费节点订阅链接，付费节点订阅推荐">11月30日 | Stair Node节点订阅每天更新21.8M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-28463.htm" title="标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）">标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-22-free-node-subscribe-links.htm" title="12月22日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐">12月22日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-23822.htm" title="推进教育现代化就要怎么样（这都可以）推进教育现代化要做些什么，沈青川，江苏教育新闻网，">推进教育现代化就要怎么样（这都可以）推进教育现代化要做些什么，沈青川，江苏教育新闻网，</a></li>
+                        <li class="py-2"><a href="/news/article-50973.htm" title="人跟狗打的狂犬疫苗一样吗多少钱（狗和人狂犬疫苗区别）">人跟狗打的狂犬疫苗一样吗多少钱（狗和人狂犬疫苗区别）</a></li>
+                        <li class="py-2"><a href="/news/article-44463.htm" title="如何从JavaScript对象中删除属性">如何从JavaScript对象中删除属性</a></li>
+                        <li class="py-2"><a href="/news/article-47911.htm" title="广州宠物狗领养网站有哪些呢（广州狗狗领养免费平台）">广州宠物狗领养网站有哪些呢（广州狗狗领养免费平台）</a></li>
+                        <li class="py-2"><a href="/news/article-24282.htm" title="《C语言及程序设计》程序阅读——宏定义">《C语言及程序设计》程序阅读——宏定义</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-v2ray.htm" title="11月19日 | Stair Node节点订阅每天更新21.5M/S免费节点订阅链接，付费节点订阅推荐">11月19日 | Stair Node节点订阅每天更新21.5M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-v2ray-subscribe.htm" title="11月7日 | Stair Node节点订阅每天更新18.9M/S免费节点订阅链接，付费节点订阅推荐">11月7日 | Stair Node节点订阅每天更新18.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-33686.htm" title="宠物医院治猫癣（宠物医院治猫癣要多少钱）">宠物医院治猫癣（宠物医院治猫癣要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-46437.htm" title="动物医院实践心得2000字怎么写（动物医院实践心得2000字怎么写的）">动物医院实践心得2000字怎么写（动物医院实践心得2000字怎么写的）</a></li>
+                        <li class="py-2"><a href="/news/article-29870.htm" title="【TypeScript】TypeScript 与 JavaScript 有何不同？">【TypeScript】TypeScript 与 JavaScript 有何不同？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-node-subscribe-links.htm" title="1月11日 | Stair Node节点订阅每天更新19.5M/S免费节点订阅链接，付费节点订阅推荐">1月11日 | Stair Node节点订阅每天更新19.5M/S免费节点订阅链接，付费节点订阅推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -131,7 +132,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
