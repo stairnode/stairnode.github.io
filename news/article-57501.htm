@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-57501.htm" />
+    <title>mysql数据库锁MDL锁的解释_在线工具</title>
+        <meta name="description" content="在我们系统中有一张表它的查询概率非常高。最近有个需求，需要对这个表增加一个字段，然而在增加字段的时候发现系统中有多个业务出现了超时操作，那么这个是什么原因导致的呢？经过查阅资料发现是数据库的MDL锁+" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-57501.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="mysql数据库锁MDL锁的解释_在线工具" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/5709630e43950cdbc876c407e1d2f9b3.webp" />
+        <meta property="og:release_date" content="2025-02-16T07:20:33" />
+    <meta property="og:updated_time" content="2025-02-16T07:20:33" />
+        <meta property="og:description" content="在我们系统中有一张表它的查询概率非常高。最近有个需求，需要对这个表增加一个字段，然而在增加字段的时候发现系统中有多个业务出现了超时操作，那么这个是什么原因导致的呢？经过查阅资料发现是数据库的MDL锁+" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="mysql数据库锁MDL锁的解释_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">mysql数据库锁MDL锁的解释_在线工具</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				</h1> <p>在我们系统中有一张表它的查询概率非常高。最近有个需求，需要对这个表增加一个字段，然而在增加字段的时候发现系统中有多个业务出现了超时操作，那么这个是什么原因导致的呢？经过查阅资料发现是数据库的<strong>MDL锁+事务导致</strong>的。</p> </h1> <p>MDL锁属于<strong>表级别的元数据锁</strong>。表级别锁分为数据锁和元数据锁，通常我们说的加锁一般指的是加的数据锁。跟数据锁一样，元数据锁也分读锁和读写锁。</p> <p>MDL不需要显示使用，在进行表操作时会自动加上。当对表进行增删改查时，会自动加上MDL读锁；当要对表进行加减字段的结构修改时，会自动加上MDL写锁。</p> <ul> <li>读锁不互斥，意味着可以多个线程同时对一张表进行增删改查的操作。</li> <li>写锁独占，进行结构修改前，要先等待其他所有的MDL锁释放了才能获取到MDL写锁。获取到写锁后，在写锁释放前，其他线程无法获取到MDL读锁和写锁。也就是说，修改一个表的结构过程中，会阻塞其他线程对表的操作。</li> </ul> </h1> <p>MDL锁的存在，其实是为了保证数据的一致性。想象一下，假如没有MDL锁，一个查询在遍历表数据的过程中，另外一个线程执行了<code>ALTER TABLE t DELETE COLUMN 'col_1'</code>把<code>col_1</code>这一列删掉了，那查询结果就乱了，结果中是否应该有这一列数据？</p> </h1> <p>✅ ：表示正常往下执行</p> <p>❌ ：表示卡住了，即无法往下执行。</p> <table> <thead> <tr> <th>事物一</th> <th>事物二</th> <th>事物三</th> </tr> </thead> <tbody> <tr> <td>start transaction;✅ 1️⃣</td> <td></td> <td></td> </tr> <tr> <td>select * from customer;✅2️⃣</td> <td>alter table customer add column_4 int null;❌3️⃣</td> <td></td> </tr> <tr> <td></td> <td></td> <td>select * from customer;❌4️⃣</td> </tr> <tr> <td>commit;✅5️⃣</td> <td>✅6️⃣</td> <td>✅7️⃣</td> </tr> </tbody> </table> <p><strong>解释：</strong></p> <p>步骤 1️⃣2️⃣正常执行。执行步骤2️⃣时，会申请表<code>customer</code>的<code>MDL的SHARED_READ锁</code>。</p> <p>步骤3️⃣会卡住，因为此时会申请表<code>customer</code>的<code>MDL的EXCLUSIVE锁</code>，但是事物一的事物没有提交，此时是无法申请到<code>EXCLUSIVE</code>锁，因为它们是互斥的。</p> <p>步骤4️⃣也会卡住，因为<code>EXCLUSIVE</code>锁和<code>SHARE_READ</code>锁是互斥的，且<code>EXCLUSIVE</code>锁的优先级更高，所以步骤4️⃣也会卡住。</p> <p>步骤5️⃣事物提交，释放表的<code>SHARE_READ</code>锁，之后就可以执行6️⃣和7️⃣的操作了。</p> <p>如果先执行事务二，在执行事务三，则是可以成功的，因为alter数据ddl语句，和事物无关。</p> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-57500.htm">v-model的修饰符</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-49933.htm" title="PHP从HTML转义详解">PHP从HTML转义详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-subscribe-node.htm" title="12月17日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐">12月17日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-node-share.htm" title="2月4日 | Stair Node节点订阅每天更新19M/S免费节点订阅链接，付费节点订阅推荐">2月4日 | Stair Node节点订阅每天更新19M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-24-node-share.htm" title="1月24日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐">1月24日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-39493.htm" title="宠物美容工资一般多少钱啊（宠物美容工资高吗）">宠物美容工资一般多少钱啊（宠物美容工资高吗）</a></li>
+                        <li class="py-2"><a href="/news/article-28463.htm" title="标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）">标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）</a></li>
+                        <li class="py-2"><a href="/news/article-52022.htm" title="动物疫苗审批需要多长时间完成（被动物咬了以后多长时间打疫苗）">动物疫苗审批需要多长时间完成（被动物咬了以后多长时间打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-22440.htm" title="和田宠物医院污水处理（和田宠物医院污水处理项目）">和田宠物医院污水处理（和田宠物医院污水处理项目）</a></li>
+                        <li class="py-2"><a href="/news/article-38021.htm" title="smdms超市订单管理系统之登录功能">smdms超市订单管理系统之登录功能</a></li>
+                        <li class="py-2"><a href="/news/article-48926.htm" title="狗粮牌子图片高清（狗粮品牌logo）">狗粮牌子图片高清（狗粮品牌logo）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
