@@ -100,6 +100,7 @@
                       				  				  				</h1> <p>在我们系统中有一张表它的查询概率非常高。最近有个需求，需要对这个表增加一个字段，然而在增加字段的时候发现系统中有多个业务出现了超时操作，那么这个是什么原因导致的呢？经过查阅资料发现是数据库的<strong>MDL锁+事务导致</strong>的。</p> </h1> <p>MDL锁属于<strong>表级别的元数据锁</strong>。表级别锁分为数据锁和元数据锁，通常我们说的加锁一般指的是加的数据锁。跟数据锁一样，元数据锁也分读锁和读写锁。</p> <p>MDL不需要显示使用，在进行表操作时会自动加上。当对表进行增删改查时，会自动加上MDL读锁；当要对表进行加减字段的结构修改时，会自动加上MDL写锁。</p> <ul> <li>读锁不互斥，意味着可以多个线程同时对一张表进行增删改查的操作。</li> <li>写锁独占，进行结构修改前，要先等待其他所有的MDL锁释放了才能获取到MDL写锁。获取到写锁后，在写锁释放前，其他线程无法获取到MDL读锁和写锁。也就是说，修改一个表的结构过程中，会阻塞其他线程对表的操作。</li> </ul> </h1> <p>MDL锁的存在，其实是为了保证数据的一致性。想象一下，假如没有MDL锁，一个查询在遍历表数据的过程中，另外一个线程执行了<code>ALTER TABLE t DELETE COLUMN 'col_1'</code>把<code>col_1</code>这一列删掉了，那查询结果就乱了，结果中是否应该有这一列数据？</p> </h1> <p>✅ ：表示正常往下执行</p> <p>❌ ：表示卡住了，即无法往下执行。</p> <table> <thead> <tr> <th>事物一</th> <th>事物二</th> <th>事物三</th> </tr> </thead> <tbody> <tr> <td>start transaction;✅ 1️⃣</td> <td></td> <td></td> </tr> <tr> <td>select * from customer;✅2️⃣</td> <td>alter table customer add column_4 int null;❌3️⃣</td> <td></td> </tr> <tr> <td></td> <td></td> <td>select * from customer;❌4️⃣</td> </tr> <tr> <td>commit;✅5️⃣</td> <td>✅6️⃣</td> <td>✅7️⃣</td> </tr> </tbody> </table> <p><strong>解释：</strong></p> <p>步骤 1️⃣2️⃣正常执行。执行步骤2️⃣时，会申请表<code>customer</code>的<code>MDL的SHARED_READ锁</code>。</p> <p>步骤3️⃣会卡住，因为此时会申请表<code>customer</code>的<code>MDL的EXCLUSIVE锁</code>，但是事物一的事物没有提交，此时是无法申请到<code>EXCLUSIVE</code>锁，因为它们是互斥的。</p> <p>步骤4️⃣也会卡住，因为<code>EXCLUSIVE</code>锁和<code>SHARE_READ</code>锁是互斥的，且<code>EXCLUSIVE</code>锁的优先级更高，所以步骤4️⃣也会卡住。</p> <p>步骤5️⃣事物提交，释放表的<code>SHARE_READ</code>锁，之后就可以执行6️⃣和7️⃣的操作了。</p> <p>如果先执行事务二，在执行事务三，则是可以成功的，因为alter数据ddl语句，和事物无关。</p> 			
                         <div class="col-md-12 mt-5">
                                                         <p>上一个：<a href="/news/article-57500.htm">v-model的修饰符</a></p>
+                                                        <p>下一个：<a href="/news/article-58065.htm">风水***说养猫好不好（风水***说养猫好不好养）</a></p>
                                                     </div>
 
                                         </div>
@@ -110,16 +111,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-49933.htm" title="PHP从HTML转义详解">PHP从HTML转义详解</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-subscribe-node.htm" title="12月17日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐">12月17日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-4-node-share.htm" title="2月4日 | Stair Node节点订阅每天更新19M/S免费节点订阅链接，付费节点订阅推荐">2月4日 | Stair Node节点订阅每天更新19M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-24-node-share.htm" title="1月24日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐">1月24日 | Stair Node节点订阅每天更新19.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-39493.htm" title="宠物美容工资一般多少钱啊（宠物美容工资高吗）">宠物美容工资一般多少钱啊（宠物美容工资高吗）</a></li>
-                        <li class="py-2"><a href="/news/article-28463.htm" title="标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）">标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）</a></li>
-                        <li class="py-2"><a href="/news/article-52022.htm" title="动物疫苗审批需要多长时间完成（被动物咬了以后多长时间打疫苗）">动物疫苗审批需要多长时间完成（被动物咬了以后多长时间打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-44969.htm" title="淮北动物救助（淮北动物救助站电话）">淮北动物救助（淮北动物救助站电话）</a></li>
+                        <li class="py-2"><a href="/news/article-53610.htm" title="javaScript深拷贝和浅拷贝简单梳理_在线工具">javaScript深拷贝和浅拷贝简单梳理_在线工具</a></li>
                         <li class="py-2"><a href="/news/article-22440.htm" title="和田宠物医院污水处理（和田宠物医院污水处理项目）">和田宠物医院污水处理（和田宠物医院污水处理项目）</a></li>
-                        <li class="py-2"><a href="/news/article-38021.htm" title="smdms超市订单管理系统之登录功能">smdms超市订单管理系统之登录功能</a></li>
-                        <li class="py-2"><a href="/news/article-48926.htm" title="狗粮牌子图片高清（狗粮品牌logo）">狗粮牌子图片高清（狗粮品牌logo）</a></li>
+                        <li class="py-2"><a href="/news/article-40497.htm" title="Neo4j数据和Cypher查询语法笔记 &#8211; Milton _在线工具">Neo4j数据和Cypher查询语法笔记 &#8211; Milton _在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-22898.htm" title="青浦二中本科录取率2019级高吗（青浦二中本科录取率2019级高吗）">青浦二中本科录取率2019级高吗（青浦二中本科录取率2019级高吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-free-node-subscribe.htm" title="1月20日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐">1月20日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-52554.htm" title="新疆宠物店被罚（新疆宠物领养中心）">新疆宠物店被罚（新疆宠物领养中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-clash-v2ray-ss-ssr.htm" title="1月14日 | Stair Node节点订阅每天更新19.9M/S免费节点订阅链接，付费节点订阅推荐">1月14日 | Stair Node节点订阅每天更新19.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-26119.htm" title="瑞鹏宠物医院在线咨询官网（瑞鹏宠物医院百度百科）">瑞鹏宠物医院在线咨询官网（瑞鹏宠物医院百度百科）</a></li>
+                        <li class="py-2"><a href="/news/article-21984.htm" title="宠物猫疫苗可以自己打么（宠物猫打疫苗可以自己打吗）">宠物猫疫苗可以自己打么（宠物猫打疫苗可以自己打吗）</a></li>
                     </ul>
     </div>
 </div>
@@ -131,7 +132,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
