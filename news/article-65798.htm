@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-65798.htm" />
+    <title>我们如何获得排序的MySQL输出？</title>
+        <meta name="description" content="MySQLSELECT命令用于从MySQL表中获取数据。当您选择行时，MySQL服务器可以自由以任何顺序返回它们，除非您通过说出如何对结果进行排序来另外指示。但是，我们可以通过添加一个ORDER BY" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-65798.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="我们如何获得排序的MySQL输出？" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/358de930c32880ac8f2d9c4c9059c931.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:37:21" />
+    <meta property="og:updated_time" content="2025-03-02T09:37:21" />
+        <meta property="og:description" content="MySQLSELECT命令用于从MySQL表中获取数据。当您选择行时，MySQL服务器可以自由以任何顺序返回它们，除非您通过说出如何对结果进行排序来另外指示。但是，我们可以通过添加一个ORDER BY" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="我们如何获得排序的MySQL输出？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">我们如何获得排序的MySQL输出？</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>MySQL<strong>SELECT</strong>命令用于从MySQL表中获取数据。当您选择行时，MySQL服务器可以自由以任何顺序返回它们，除非您通过说出如何对结果进行排序来另外指示。但是，我们可以通过添加一个<strong>ORDER BY</strong>子句对结果集进行排序，该子句命名要排序的一个或多个列。</p> <h2>语法</h2> <pre>Select&nbsp;column1,&nbsp;column2,…,columN&nbsp;From&nbsp;table_name&nbsp;ORDER&nbsp;BY&nbsp;column1[column2,…];</pre> <h2>示例</h2> <p>在下面的示例中，MySQL返回根据“名称”列排序的结果集；</p> <pre>mysql&gt;&nbsp;Select&nbsp;Id,&nbsp;Name,&nbsp;Address&nbsp;from&nbsp;Student&nbsp;ORDER&nbsp;BY&nbsp;Subject; +------+---------+---------+ |&nbsp;Id&nbsp;&nbsp;&nbsp;|&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Address&nbsp;| +------+---------+---------+ |&nbsp;15&nbsp;&nbsp;&nbsp;|&nbsp;Harshit&nbsp;|&nbsp;Delhi&nbsp;&nbsp;&nbsp;| |&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Gaurav&nbsp;&nbsp;|&nbsp;Delhi&nbsp;&nbsp;&nbsp;| |&nbsp;17&nbsp;&nbsp;&nbsp;|&nbsp;Raman&nbsp;&nbsp;&nbsp;|&nbsp;Shimla&nbsp;&nbsp;| |&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Aarav&nbsp;&nbsp;&nbsp;|&nbsp;Mumbai&nbsp;&nbsp;| +------+---------+---------+ 4&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-65160.htm">宠物医院美团好评模板 宠物医院美团好评模板图片</a></p>
+                                                        <p>下一个：<a href="/news/article-65799.htm">筛沙机小型（筛沙机小型多少钱一台）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-high-speed-nodes.htm" title="1月13日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接，付费节点订阅推荐">1月13日 | Stair Node节点订阅每天更新20.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-33208.htm" title="宠物医院的电话是多少?（宠物医院的电话号码）">宠物医院的电话是多少?（宠物医院的电话号码）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-node-share-links.htm" title="2月16日 | Stair Node节点订阅每天更新22.9M/S免费节点订阅链接，付费节点订阅推荐">2月16日 | Stair Node节点订阅每天更新22.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-62733.htm" title="宠物粮销售招聘信息（宠物食品招聘主粮厂长）">宠物粮销售招聘信息（宠物食品招聘主粮厂长）</a></li>
+                        <li class="py-2"><a href="/news/article-25672.htm" title="兽医疫苗批号怎么查（兽医疫苗批号怎么查询）">兽医疫苗批号怎么查（兽医疫苗批号怎么查询）</a></li>
+                        <li class="py-2"><a href="/news/article-23822.htm" title="推进教育现代化就要怎么样（这都可以）推进教育现代化要做些什么，沈青川，江苏教育新闻网，">推进教育现代化就要怎么样（这都可以）推进教育现代化要做些什么，沈青川，江苏教育新闻网，</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-node-share.htm" title="12月13日 | Stair Node节点订阅每天更新20.3M/S免费节点订阅链接，付费节点订阅推荐">12月13日 | Stair Node节点订阅每天更新20.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-33686.htm" title="宠物医院治猫癣（宠物医院治猫癣要多少钱）">宠物医院治猫癣（宠物医院治猫癣要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-64554.htm" title="Vue各类组件之间传值的实现方式">Vue各类组件之间传值的实现方式</a></li>
+                        <li class="py-2"><a href="/news/article-27067.htm" title="猫咪的三针疫苗间隔多久打第二针（猫咪三针疫苗管多久）">猫咪的三针疫苗间隔多久打第二针（猫咪三针疫苗管多久）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
