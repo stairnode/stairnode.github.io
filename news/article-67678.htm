@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-67678.htm" />
+    <title>如何用C/C++实现去除字符串头和尾指定的字符</title>
+        <meta name="description" content="编程时我们经常需要对字符串进行操作，其中有一项操作就是去除字符串的头（尾）指定的字符，比如空格。通常我们会使用封装好的库函数或者类函数的Trim方法来实现，如果自己动手写一个TrimHead和Trim" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-67678.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="如何用C/C++实现去除字符串头和尾指定的字符" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/a5ac000d97c0f4144822616e05d549da.webp" />
+        <meta property="og:release_date" content="2025-03-05T11:11:40" />
+    <meta property="og:updated_time" content="2025-03-05T11:11:40" />
+        <meta property="og:description" content="编程时我们经常需要对字符串进行操作，其中有一项操作就是去除字符串的头（尾）指定的字符，比如空格。通常我们会使用封装好的库函数或者类函数的Trim方法来实现，如果自己动手写一个TrimHead和Trim" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="如何用C/C++实现去除字符串头和尾指定的字符">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">如何用C/C++实现去除字符串头和尾指定的字符</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>编程时我们经常需要对字符串进行操作，其中有一项操作就是去除字符串的头（尾）指定的字符，比如空格。通常我们会使用封装好的库函数或者类函数的Trim方法来实现，<strong>如果自己动手写一个TrimHead和TrimTail函数该如何实现呢？</strong></p> <p>本文针对字符串头（尾）部指定的字符的去除，分别给出两个实现方法。并分别比较一下改进后的性能如何？</p> <h2 id="一从头部开始去除指定字符">一、从头部开始去除指定字符</h2> <p>首先从头遍历，直到遇见第一个非指定字符，此后将后续字符按顺序逐一前移。</p> <pre><code class="language-c">// 实现方式一 void TrimHead(char* pszSrc, char chTrim) { 	if(NULL == pszSrc) 		return; 	 	// 从头部开始跳过chTrim指定的字符 	char* psz = pszSrc; 	while (*psz &amp;&amp; *psz == chTrim)  		psz++; 	 	// 将后面字符逐一拷贝到前面 	int i = 0; 	while(*psz) 	{ 		*(pszSrc+i) = *psz; 		i++; 		psz++; 	} 	*(pszSrc+i) = 0; }</code></pre> <p>上述函数中，在找到第一个非指定字符后，通过while函数逐一前移字符，如果后续字符串很长的话，性能是不是会比较低？<strong>我们改进一下，使用memmove函数替换while操作，下面是实现方法，代码更加简洁易读。</strong></p> <pre><code class="language-c">// 实现方式二 void TrimHeadEx(char* pszSrc, char chTrim) { 	if(NULL == pszSrc) 		return;  	// 从头部开始跳过chTrim指定的字符 	int iStrLen = strlen(pszSrc); 	char* psz = pszSrc; 	while (*psz &amp;&amp; *psz == chTrim)  		psz++;  	// psz指向第一个非指定字符的位置 	if(psz != pszSrc) 	{ 		// 计算新字符串长度 		iStrLen = iStrLen - (psz - pszSrc); 		memmove(pszSrc, psz, (iStrLen+1));	// +1表示将末尾的0也一并拷贝 	} }</code></pre> <p><strong>方法二的代码要比方法一的简洁，那么它的速度会比方法一的快么？文末会给出答案。</strong></p> <h2 id="二去除尾部指定的字符">二、去除尾部指定的字符</h2> <pre><code class="language-c">// 实现方式一 void TrimTail(char* pszSrc, char chTrim) { 	if(NULL == pszSrc) 		return;  	char* psz = pszSrc; 	char* pszLast = NULL; 	 	// 从头开始遍历直到整个字符串结束 	while(*psz) 	{ 		// 遇到指定字符，则用pszLast记住该位置 		if(*psz == chTrim) 		{ 			if(NULL == pszLast) 				pszLast = psz; 		} 		else 			pszLast = NULL; 		psz++; 	} 	 	// 如果找到末尾的第一个指定字符，则作为字符串的结尾 	if(pszLast != NULL) 		*pszLast = 0; }</code></pre> <p>上述方法中，我们需要遍历完整个字符串，<strong>如果字符串很长的话，或者遇到极端情况，就是结尾没有指定字符时，也要将整个字符串遍历完毕。显然这种实现方式的效率并不高。</strong> 那么我们改进一下算法，从字符串的尾部进行遍历。</p> <pre><code class="language-c">// 实现方式二 void TrimTailEx(char* pszSrc, char chTrim) { 	if(NULL == pszSrc) 		return;  	// 从尾部开始跳过chTrim指定字符 	int iStrLen = strlen(pszSrc); 	char* pszStr = pszSrc; 	int iLastIdx = iStrLen - 1; 	while(iLastIdx &gt;= 0 &amp;&amp; *(pszStr+iLastIdx) == chTrim) 		iLastIdx--; 	 	// 计算新字符串长度并在结尾赋值为0 	iStrLen = iLastIdx+1; 	*(pszSrc+iStrLen) = 0; }</code></pre> <p>上述实现方式是从字符串的尾部进行遍历，实现的方式也更加的简洁。如果结尾没有指定字符，该函数会在遍历第一个字符后就退出，性能显然要好过方式一。</p> <p><strong>那么对于TrimHead和TrimTail的两种实现，方式二和方式一到底谁快呢？是不是和我们想象的一样有差距或者差距很大呢？</strong></p> <h2 id="三测试比较">三、测试比较</h2> <p>这里写了一个测试函数TestSpeedTrim，为了让时间更加明显，在该函数中设置的循环次数为10000000。大家可以亲自运行测试一下，看看debug和release两个版本的差异，结果一定会让你吃惊，可能和你想的并不一样哦。</p> <pre><code class="language-c">#include &lt;time.h&gt; #include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;stdlib.h&gt; void TestSpeedTrim(bool bTrimHead) { 	char szTrim1[256] = {0}; 	char szTrim2[256] = {0}; 	 	char* pszOrigin = "     This is a trim test head/tail    "; 	strcpy(szTrim1, pszOrigin); 	strcpy(szTrim2, pszOrigin); 	 	int i = 0; 	int iCount = 10000000; 	clock_t cStart = 0; 	 	// 第一种Trim方法 	cStart = clock(); 	for(i = 0; i &lt; iCount; i++) 	{ 		bTrimHead ? TrimHead(szTrim1, ' ') : TrimTail(szTrim1, ' '); 	} 	clock_t cSpan1 = clock() - cStart; 	 	// 第二种Trim方法 	cStart = clock(); 	for(i = 0; i &lt; iCount; i++) 	{ 		bTrimHead ? TrimHeadEx(szTrim2, ' ') :	TrimTailEx(szTrim2, ' '); 	} 	clock_t cSpan2 = clock() - cStart; 	 	printf("cSpan1 = %d, cSpan2 = %d\r\n", cSpan1, cSpan2); 	printf("szTrim1=[%s]\r\n", szTrim1); 	printf("szTrim2=[%s]\r\n", szTrim2); }  int main(int argc, char* argv[]) { 	// 测试头 	printf("删除头部的空字符：\r\n"); 	TestSpeedTrim(true);  	// 测试尾 	printf("\r\n删除尾部的空字符：\r\n"); 	TestSpeedTrim(false);  	getchar(); 	return 0; }</code></pre> <p><strong>这里就不给出比较结果了，因为只有自己亲自动手实现并跑一遍后，才会记得更加牢靠。</strong></p> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-67677.htm">@DateTimeFormat与@JsonFormat和value-format</a></p>
+                                                        <p>下一个：<a href="/news/article-68320.htm">【济南宠物寄养|济南宠物寄养信息】 济南宠物寄养中心排名</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-45451.htm" title="看图识猫品种（看图识猫品种三花猫）">看图识猫品种（看图识猫品种三花猫）</a></li>
+                        <li class="py-2"><a href="/news/article-35559.htm" title="Shiro&#8211;解决is not eligible for getting processed by all BeanPostProcessors">Shiro&#8211;解决is not eligible for getting processed by all BeanPostProcessors</a></li>
+                        <li class="py-2"><a href="/news/article-41482.htm" title="事务的隔离级别与MVCC">事务的隔离级别与MVCC</a></li>
+                        <li class="py-2"><a href="/news/article-59787.htm" title="申请动物医院的条件和流程怎么写申请书（动物医院办理条件）">申请动物医院的条件和流程怎么写申请书（动物医院办理条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-node-share-links.htm" title="1月30日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐">1月30日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-39492.htm" title="宠物医院需要几个医生（宠物医院需要几个医生的资质）">宠物医院需要几个医生（宠物医院需要几个医生的资质）</a></li>
+                        <li class="py-2"><a href="/news/article-55251.htm" title="动物园兽医是正式工吗（动物园的兽医学历）">动物园兽医是正式工吗（动物园的兽医学历）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-v2ray-subscribe.htm" title="3月7日 | Stair Node节点订阅每天更新22.8M/S免费节点订阅链接，付费节点订阅推荐">3月7日 | Stair Node节点订阅每天更新22.8M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-node-share-links.htm" title="3月8日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐">3月8日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-node-subscribe.htm" title="2月14日 | Stair Node节点订阅每天更新21.9M/S免费节点订阅链接，付费节点订阅推荐">2月14日 | Stair Node节点订阅每天更新21.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
