@@ -100,6 +100,7 @@
                       				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2><a id="_0" rel="nofollow"></a>问题描述</h2> <p>在开发spring-cloud项目的时候，Feign的熔断器不起作用，指定了fallback不起作用。</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"produce"</span><span class="token punctuation">,</span> fallback<span class="token operator">=</span><span class="token class-name">ProduceCallback</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">ProduceSevice</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/index"</span><span class="token punctuation">)</span><span class="token class-name">String</span><span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <pre><code class="prism language-java"><span class="token annotation punctuation">@Component</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ProduceCallback</span><span class="token keyword">implements</span><span class="token class-name">ProduceSevice</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">String</span><span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token string">"this is error"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>当produce停掉以后，直接报错，不会走fallback指定的熔断方法。</p> <h2><a id="_19" rel="nofollow"></a>互联网上的解决方案</h2> <p>基本上网络上都是指的没有开启hystrix，解决方法是在yml中设置</p> <pre><code class="prism language-yml"><span class="token key atrule">feign</span><span class="token punctuation">:</span><span class="token key atrule">hystrix</span><span class="token punctuation">:</span><span class="token key atrule">enabled</span><span class="token punctuation">:</span><span class="token boolean important">true</span></code></pre> <p>但是按照这个办法，不起作用 。</p> <h2><a id="_28" rel="nofollow"></a>摸索到的解决方法</h2> <p>下载了很多源代码，在我本地跑起来hystrix可以起作用，但是我自己建立的项目就是无法起作用。类似的貌似还有bootstrap.yml不起作用。最后排除发现和网络上的代码最大的产品就是spring-cloud的版本区别。</p> <pre><code class="prism language-yml">&lt;properties<span class="token punctuation">&gt;</span>         &lt;java.version<span class="token punctuation">&gt;</span>1.8&lt;/java.version<span class="token punctuation">&gt;</span>         &lt;spring<span class="token punctuation">-</span>cloud.version<span class="token punctuation">&gt;</span>2020.0.0<span class="token punctuation">-</span>M6&lt;/spring<span class="token punctuation">-</span>cloud.version<span class="token punctuation">&gt;</span>     &lt;/properties<span class="token punctuation">&gt;</span></code></pre> <p>我用IDEA建立项目后默认的spring-cloud.version版本是这个样子的。<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://spring.io/projects/spring-cloud"  rel="nofollow">官网关于spring-cloud.version的介绍</a><br /> 我修改为 Hoxton.SR9 后一切正常。同时把springboot的版本降低为2.3.5.REALSE后表现正常，莫非2020.0.0-M6后对这块代码有巨大变化。</p> </div> 			
                         <div class="col-md-12 mt-5">
                                                         <p>上一个：<a href="/news/article-71582.htm">Android 4.0.1破坏了WebView HTML 5本地存储？</a></p>
+                                                        <p>下一个：<a href="/news/article-72252.htm">领养小猫的网站（领养猫咪的网站）</a></p>
                                                     </div>
 
                                         </div>
@@ -110,16 +111,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-62733.htm" title="宠物粮销售招聘信息（宠物食品招聘主粮厂长）">宠物粮销售招聘信息（宠物食品招聘主粮厂长）</a></li>
-                        <li class="py-2"><a href="/news/article-44464.htm" title="宠物美容师干什么（宠物美容师有前景吗）">宠物美容师干什么（宠物美容师有前景吗）</a></li>
-                        <li class="py-2"><a href="/news/article-62732.htm" title="servlet 中 servlet context 与 session 与 request 三个对象的常用方法和存放数据的作用域。">servlet 中 servlet context 与 session 与 request 三个对象的常用方法和存放数据的作用域。</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-25-clash-v2ray-ss-ssr.htm" title="2月25日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">2月25日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-9-node-share-links.htm" title="2月9日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接，付费节点订阅推荐">2月9日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-subscribe-node.htm" title="2月21日 | Stair Node节点订阅每天更新20.9M/S免费节点订阅链接，付费节点订阅推荐">2月21日 | Stair Node节点订阅每天更新20.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-subscribe-node.htm" title="1月6日 | Stair Node节点订阅每天更新21.9M/S免费节点订阅链接，付费节点订阅推荐">1月6日 | Stair Node节点订阅每天更新21.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
-                        <li class="py-2"><a href="/news/article-37517.htm" title="Python中将字典转为成员变量详解">Python中将字典转为成员变量详解</a></li>
+                        <li class="py-2"><a href="/news/article-36549.htm" title="狗粮批发价格表（狗粮批发价格表最新）">狗粮批发价格表（狗粮批发价格表最新）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-free-node-subscribe.htm" title="2月12日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">2月12日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-node-share-links.htm" title="1月8日 | Stair Node节点订阅每天更新19.5M/S免费节点订阅链接，付费节点订阅推荐">1月8日 | Stair Node节点订阅每天更新19.5M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-23-clash-v2ray-ss-ssr.htm" title="2月23日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐">2月23日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-37040.htm" title="猫咪打疫苗多少钱一支（猫咪打疫苗多少钱一支啊）">猫咪打疫苗多少钱一支（猫咪打疫苗多少钱一支啊）</a></li>
                         <li class="py-2"><a href="/news/article-44969.htm" title="淮北动物救助（淮北动物救助站电话）">淮北动物救助（淮北动物救助站电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-27-node-share.htm" title="1月27日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐">1月27日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-39492.htm" title="宠物医院需要几个医生（宠物医院需要几个医生的资质）">宠物医院需要几个医生（宠物医院需要几个医生的资质）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-v2ray.htm" title="3月6日 | Stair Node节点订阅每天更新20.8M/S免费节点订阅链接，付费节点订阅推荐">3月6日 | Stair Node节点订阅每天更新20.8M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-66401.htm" title="猫咪打疫苗总共需要多少钱一针（猫咪打疫苗总共需要多少钱一针呢）">猫咪打疫苗总共需要多少钱一针（猫咪打疫苗总共需要多少钱一针呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-clash-v2ray-ss-ssr.htm" title="3月5日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐">3月5日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -131,7 +132,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+                <h4><span class="badge" style="float: right;">41</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
