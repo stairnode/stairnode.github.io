@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-76950.htm" />
+    <title>适合初学者的C语言字符串讲解_C 语言_</title>
+        <meta name="description" content="这一篇博客我们来了解一下字符串，看下面这个我们熟知的也是最先学习的代码  "Hello world!"  这一堆的字母就是字符串字面值，简称字符串，每一个字母都是一个字符，字符串需要用" "双引号来引" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-76950.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="适合初学者的C语言字符串讲解_C 语言_" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/8c13ba0e3e1f4af2cb8755e2650f1dce.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:09:51" />
+    <meta property="og:updated_time" content="2025-03-19T09:09:51" />
+        <meta property="og:description" content="这一篇博客我们来了解一下字符串，看下面这个我们熟知的也是最先学习的代码  "Hello world!"  这一堆的字母就是字符串字面值，简称字符串，每一个字母都是一个字符，字符串需要用" "双引号来引" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="适合初学者的C语言字符串讲解_C 语言_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">适合初学者的C语言字符串讲解_C 语言_</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>这一篇博客我们来了解一下字符串，看下面这个我们熟知的也是最先学习的代码</p> <blockquote> <p>"Hello world!"</p> </blockquote> <p>这一堆的字母就是字符串字面值，简称字符串，每一个字母都是一个字符，字符串需要用" "双引号来引起，字符需要用’ '单引号来引起，就像下面</p> <blockquote> <p>"Hello world!"  //字符串<br />'a'  //字符<br />'!'  //字符</p> </blockquote> <p>字符串也算常量，上面三条都算字面常量，之前的讲常量的时候就举过这种例子</p> <p>那么字符串有什么用呢？</p> <p>假设我们要把下面的字符串存起来，那么我们需要怎么存呢？</p> <blockquote> <p>"abcdef"</p> </blockquote> <p>我们可以把它放在字符串数组里,有两种形式如下：</p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;stdio.h&gt;    int main()  {  char arr1[10]="abcdef";                     //形式一  char arr2[10]={'a','b','c','d','e','f'};    //形式二    //我们打印一下这些字符串  printf("%s\n",arr1);  printf("%s\n",arr2);    return 0;  }  </pre> </div> <p>运行的结果：</p> <blockquote> <p>abcdef</p> <p>abcdef</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/b543b6c3d8316cf24471776b1b9d0aa0.jpg"></p> <p>把"abcdef"都存在arr[ ]这个数组里面，[ ]里面数是多少，就能存多少字符</p> <p>arr[10]可以存10个字符 ，但一定要不小于你要存的字符</p> <p>你也可以不写[ ]里面的数字，它会自己根据你要存的字符串来调整，就像这样</p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;stdio.h&gt;    int main()  {  char arr[]="abcdef";    //char-字符类型，没有字符串类型哦  return 0;  }  </pre> </div> <p>那这两种形式有什么区别呢？</p> <p>我们不写arr[ ]里面的数字，我们来看一下</p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;stdio.h&gt;    int main()  {  char arr1[]="abcdef";  char arr2[]={'a','b','c','d','e','f'};    //我们打印一下这些字符串  printf("%s\n",arr1);  printf("%s\n",arr2);    return 0;  }  </pre> </div> <p>运行的结果：</p> <blockquote> <p>abcdef</p> <p>abcdef烫烫烫烫烫abcdef</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/a168617c14cc47e2bd0194e123cf012c.jpg"></p> <p>哎，发现没有，它们不一样了，那为什么会出现这种情况呢？</p> <p>先想一个问题，它是根据什么来停止打印的？</p> <p>（啊，你会问：它们后面啥都没有，我怎么会知道它们根据什么来停下来的）</p> <p>那里确实看不见有什么标志，但是那个标志就是看不见的，字符串的结束标志是\0,它是一个我们马上就会学到的转义字符</p> <div class="ay1code"> <pre class="brush:cpp;">char arr1[]="abcdef";  </pre> </div> <p>这个形式一，字符串后面就默认带了一个\0</p> <div class="ay1code"> <pre class="brush:cpp;">char arr2[]={'a','b','c','d','e','f'};</pre> </div> <p>这个形式二，后面没有\0</p> <p>懂了吧，printf去打印的时候要识别到\0才会结束</p> <p>第一个形式最后一个字符结束就识别到了\0，然后结束</p> <p>第二个形式识别到最后的f，一直都没有识别到\0，就一直打印下去，最后就出现刚才的结果</p> <p>那么如果我们给第二个形式加一个\0作为结束标志怎么样，不要光想，我们来做一下试试</p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;stdio.h&gt;    int main()  {  char arr1[]="abcdef\0";   //我们也试一下给它也加一个\0  char arr2[]={'a','b','c','d','e','f','\0'};    //我们打印一下这些字符串  printf("%s\n",arr1);    //%s是打印字符串的  printf("%s\n",arr2);    //%s是打印字符串的     return 0;  }  </pre> </div> <p>运行的结果：</p> <blockquote> <p>abcdef</p> <p>abcdef</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/82928d9523e0ca1511f6af1149c66003.jpg"></p> <p>结果运行正常了</p> <p>那么\0算不算里面的字符串长度的一部分呢？</p> <p>又来介绍一个好东西，strlen，它可以计算一个字符串长度的函数，但是使用它还是跟以前一样，需要给另一个头文件string.h打一下招呼才能使用它，我们来实操一下：</p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;string.h&gt;  #include&lt;string.h&gt;    int main()  {  	char a[] = "abc";  	char b[] = "abc\0";  	printf("%d", strlen(a));  	printf("%d", strlen(b));  	return 0;  }  </pre> </div> <p>运行结果：</p> <blockquote> <p>3</p> <p>3</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/feb512ac68ae68c29363357d979587fe.jpg"></p> <blockquote> <p>"abc"</p> </blockquote> <p>这个字符串的长度为3，所以我们可以知道看不见的\0并不算在长度里面的,就算在后面加上\0也是一样</p> <p>大家可以试一试计算一下第二种形式不加\0情况下的字符串长度，保持好奇心，去自己尝试一下。</p> <p>就这样，我们把"abcdef"这个数组储存起来了，那我们要使用里面的字符怎么办？我们还需要再了解一个知识：</p> <p>调用arr里面字符，用arr[2]就可以调用c，用arr[0]就可以调用a，它们的对应关系也就是：</p> <blockquote> <p> a  b  c  d  e  f<br /> 0  1  2  3  4  5</p> </blockquote> <p>我们来实验一下</p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;stdio.h&gt;    int main()  {  char arr[]="abcdef";  printf("%c",arr[2]);  return 0;  }  </pre> </div> <p>运行结果：</p> <blockquote> <p>a</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/af61bab6337649c7bd9ad55534c0f26d.jpg"></p> <div class="ay1code"> <pre class="brush:cpp;">#include&lt;stdio.h&gt;    int main()  {  char arr[]="abcdef";  printf("%c",arr[0]);  return 0;  }  </pre> </div> <p>运行结果：</p> <blockquote> <p>a</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/cfdae8e06840af16cbbd4c8bfa291c4a.jpg"></p> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-76278.htm">丹阳宠物免费领养地址在哪里（丹阳有宠物收留中心吗）</a></p>
+                                                        <p>下一个：<a href="/news/article-76951.htm">动物疫苗行业介绍ppt（动物疫苗行业龙头）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-node-share.htm" title="2月4日 | Stair Node节点订阅每天更新19M/S免费节点订阅链接，付费节点订阅推荐">2月4日 | Stair Node节点订阅每天更新19M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-71582.htm" title="Android 4.0.1破坏了WebView HTML 5本地存储？">Android 4.0.1破坏了WebView HTML 5本地存储？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-node-subscribe.htm" title="1月21日 | Stair Node节点订阅每天更新20.1M/S免费节点订阅链接，付费节点订阅推荐">1月21日 | Stair Node节点订阅每天更新20.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-node-share-links.htm" title="3月2日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">3月2日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-46957.htm" title="淮北动物救助（淮北动物救助站电话）">淮北动物救助（淮北动物救助站电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-subscribe-node.htm" title="2月21日 | Stair Node节点订阅每天更新20.9M/S免费节点订阅链接，付费节点订阅推荐">2月21日 | Stair Node节点订阅每天更新20.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-58704.htm" title="济南宠物领养日（济南宠物领养微信群）">济南宠物领养日（济南宠物领养微信群）</a></li>
+                        <li class="py-2"><a href="/news/article-53083.htm" title="Java中无法访问的语句错误">Java中无法访问的语句错误</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="2月18日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">2月18日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-56935.htm" title="2021公务员考试国考报名条件及流程（公务员国考报考指南）">2021公务员考试国考报名条件及流程（公务员国考报考指南）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">59</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
