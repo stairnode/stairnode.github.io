@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-80357.htm" />
+    <title>JAVA锁  ——  ReentrantLock公平锁和非公平锁原理详解</title>
+        <meta name="description" content="一、简介：  ReentrantLock的实现是基于其内部类FairSync(公平锁)和NonFairSync(非公平锁)实现的。 其可重入性是基于Thread.currentThread()实现的：" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-80357.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="JAVA锁  ——  ReentrantLock公平锁和非公平锁原理详解" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/254185fc89d6e1015c4024d41d7ed770.webp" />
+        <meta property="og:release_date" content="2025-03-24T08:20:51" />
+    <meta property="og:updated_time" content="2025-03-24T08:20:51" />
+        <meta property="og:description" content="一、简介：  ReentrantLock的实现是基于其内部类FairSync(公平锁)和NonFairSync(非公平锁)实现的。 其可重入性是基于Thread.currentThread()实现的：" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JAVA锁  ——  ReentrantLock公平锁和非公平锁原理详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">JAVA锁  ——  ReentrantLock公平锁和非公平锁原理详解</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <blockquote> <p><strong>一、简介：</strong></p> </blockquote> <p>ReentrantLock的实现是基于其内部类<span style="color:#f33b45;">FairSync</span>(公平锁)和<span style="color:#f33b45;">NonFairSync</span>(非公平锁)实现的。 其<span style="color:#f33b45;">可重入性</span>是基于<span style="color:#f33b45;">Thread.currentThread()</span>实现的：如果当前线程已经获得了执行序列中的锁， 那执行序列之后的所有方法都可以获得这个锁。</p> <h3>1、公平锁</h3> <ul> <li>公平和非公平锁的队列都基于<span style="color:#f33b45;">锁内部维护的一个双向链表</span>，表结点<span style="color:#f33b45;">Node的值</span>就是<span style="color:#f33b45;">每一个请求当前锁的线程</span>。<span style="color:#f33b45;">公平锁</span>则在于每次都是依次从<span style="color:#f33b45;">队首取值</span>。</li> <li>锁的实现方式是基于如下几点：<br /> &nbsp; &nbsp; &nbsp; &nbsp;1、表结点Node和状态state的volatile关键字。<br /> &nbsp; &nbsp; &nbsp; &nbsp; 2、sum.misc.Unsafe.compareAndSet的原子操作(见附录)</li> </ul> <h3>2、非公平锁</h3> <p>在等待锁的过程中， 如果有任意新的线程妄图获取锁，都是有很大的几率直接获取到锁的。</p> <ul> <li>ReentrantLock锁都不会使得线程中断，除非开发者自己设置了中断位。</li> <li>ReentrantLock获取锁里面有看似自旋的代码，但是它不是自旋锁。</li> <li>ReentrantLock<span style="color:#f33b45;">公平与非公平锁都是属于排它锁</span>。</li> </ul> <blockquote> <p><strong>二、ReentrantLock的可重入性分析</strong></p> </blockquote> <p>ReentrantLock重入性是基于Thread.currentThread()实现的: 如果当前线程已经获得了锁， 那该<span style="color:#f33b45;">线程下的所有方法都可以获得这个锁</span>。ReentrantLock的锁依赖只有 NonfairSync和FairSync两个实现类， 他们的锁获取方式大同小异。</p> <pre class="has"><code class="language-java">//可重入性的实现基于下面代码片段的 else if 语句 protected final boolean tryAcquire(int acquires) {     final Thread current = Thread.currentThread();     int c = getState();     if (c == 0) {         ...         // 尝试获取锁成功     }     else if (current == getExclusiveOwnerThread()) {         // 是当前线程，直接获取到锁。实现可重入性。         int nextc = c + acquires;         if (nextc &lt; 0)             throw new Error("Maximum lock count exceeded");         setState(nextc);         return true;     }     return false; }</code></pre> <p>此处有两个值需要关心：</p> <pre class="has"><code class="language-java">  	 //持有该锁的当前线程     private transient Thread exclusiveOwnerThread;      -----------------两个值不在同一个类----------------     /**      * 同步状态      * 0： 初始状态-无任何线程得到了锁      * &gt; 0: 被线程持有， 具体值表示被当前线程持有的执行次数      * 这个字段在解锁的时候也需要用到。      * 注意这个字段的修饰词: volatile      */     private volatile int state;</code></pre> <blockquote> <p><strong>三、ReentrantLock锁的实现分析</strong></p> </blockquote> <p><a name="t5" rel="nofollow"></a><a id="1_53" rel="nofollow"></a><strong>1、公平锁和非公平锁</strong></p> <p>ReentrantLock 的公平锁和非公平锁都委托了<span style="color:#f33b45;">AbstractQueuedSynchronizer#acquire</span>去请求获取。</p> <pre class="has"><code class="language-java">public final void acquire(int arg) {     if (!tryAcquire(arg) &amp;&amp;         acquireQueued(addWaiter(Node.EXCLUSIVE), arg))         selfInterrupt(); }</code></pre> <ul> <li><span style="color:#f33b45;">tryAcquire</span> 是一个抽象方法，是公平与非公平的实现原理所在。</li> <li>addWaiter 是<span style="color:#f33b45;">将当前线程结点加入等待队列之中</span>。公平锁在锁释放后会严格按照等到队列去取后续值，而非公平锁在对于新晋线程有很大优势。</li> <li><span style="color:#f33b45;">acquireQueued</span>在多次循环中尝试获取到锁或者将当前线程阻塞。</li> <li><span style="color:#f33b45;">selfInterrupt</span> 如果线程在阻塞期间发生了中断，调用<span style="color:#f33b45;">Thread.currentThread().interrupt()</span> 中断当前线程。</li> <li>ReentrantLock 对线程的阻塞是基于<span style="color:#f33b45;">LockSupport.park(this)</span>; (AbstractQueuedSynchronizer#parkAndCheckInterrupt，先决条件是当前节点有限次尝试获取锁失败。）</li> </ul> <p>公平锁和非公平锁在锁的获取上都使用到了<span style="color:#f33b45;">volatile 关键字修饰的state字段</span>， 这是保证<span style="color:#f33b45;">多线程环境下锁的获取与否的核心</span>。但是当并发情况下<span style="color:#f33b45;">多个线程都读取到 state == 0</span>时，则必须用到<span style="color:#f33b45;">CAS</span>技术，一门CPU的原子锁技术，可通过CPU对共享变量加锁的形式，实现数据变更的原子操作。volatile 和 CAS的结合是并发抢占的关键。</p> <h3><a name="t6" rel="nofollow"></a><a id="2FairSync_70" rel="nofollow"></a>2、公平锁FairSync</h3> <p>公平锁的实现机理在于每次有线程来抢占锁的时候，都会<span style="color:#f33b45;">检查一遍有没有等待队列</span>，如果有， 当前线程会执行如下步骤：</p> <pre class="has"><code class="language-java">if (!hasQueuedPredecessors() &amp;&amp; compareAndSetState(0, acquires)) {     setExclusiveOwnerThread(current);     return true; }</code></pre> <p>其中hasQueuedPredecessors是用于检查是否有等待队列的。</p> <pre class="has"><code class="language-java"> public final boolean hasQueuedPredecessors() {         Node t = tail; // Read fields in reverse initialization order         Node h = head;         Node s;         return h != t &amp;&amp;             ((s = h.next) == null || s.thread != Thread.currentThread());     }</code></pre> <h3>3、非公平锁NonfairSync</h3> <p>非公平锁在实现的时候多次强调随机抢占：</p> <pre class="has"><code class="language-java">if (c == 0) {     if (compareAndSetState(0, acquires)) {         setExclusiveOwnerThread(current);         return true;     } }</code></pre> <p>与公平锁的区别在于<span style="color:#f33b45;">新晋获取锁的进程会有多次机会去抢占锁</span>。如果被加入了等待队列后则跟公平锁没有区别。</p> <h3>4、ReentrantLock锁的释放</h3> <p>ReentrantLock锁的释放是逐级释放的，也就是说在可重入性场景中，必须要等到<span style="color:#f33b45;">场景内所有的加锁的方法都释放了锁， 当前线程持有的锁才会被释放。</span><br /> 释放的方式很简单， state字段减一即可：</p> <pre class="has"><code class="language-java">protected final boolean tryRelease(int releases) {     //  releases = 1     int c = getState() - releases;     if (Thread.currentThread() != getExclusiveOwnerThread())         throw new IllegalMonitorStateException();     boolean free = false;     if (c == 0) {         free = true;         setExclusiveOwnerThread(null);     }     setState(c);     return free; }</code></pre> <h3>5、ReentrantLock等待队列中元素的唤醒</h3> <p>当前<span style="color:#f33b45;">拥有锁的线程释放锁之后， 且非公平锁无线程抢占</span>，就开始线程唤醒的流程。<br /> 通过tryRelease释放锁成功，调用LockSupport.unpark(s.thread); 终止线程阻塞。</p> <pre class="has"><code class="language-java">private void unparkSuccessor(Node node) {     // 强行回写将被唤醒线程的状态     int ws = node.waitStatus;     if (ws &lt; 0)         compareAndSetWaitStatus(node, ws, 0);     Node s = node.next;     // s为h的下一个Node, 一般情况下都是非Null的     if (s == null || s.waitStatus &gt; 0) {         s = null;         // 否则按照FIFO原则寻找最先入队列的并且没有被Cancel的Node         for (Node t = tail; t != null &amp;&amp; t != node; t = t.prev)             if (t.waitStatus &lt;= 0)                 s = t;     }     // 再唤醒它     if (s != null)         LockSupport.unpark(s.thread); }</code></pre> <h3>6、ReentrantLock内存可见性分析</h3> <pre class="has"><code class="language-java">try {     lock.lock();     i ++; } finally {     lock.unlock(); }</code></pre> <p>可以发现哪怕在不使用 volatile关键字修饰元素i的时候， 这里的i 也是没有并发问题的。<br /><span style="color:#f33b45;">volatile 是Java语言的关键字， 功能是保证被修饰的元素(共享变量)</span>：</p> <ul> <li>任何<span style="color:#f33b45;">进程在读取</span>的时候，都会清空本进程里面持有的共享变量的值，<span style="color:#f33b45;">强制从主存里面获取</span>；</li> <li>任何<span style="color:#f33b45;">进程在写入完毕</span>的时候，都会强制<span style="color:#f33b45;">将共享变量的值写会主存</span>。</li> <li>volatile 会干预指令重排。</li> <li>volatile 实现了<span style="color:#f33b45;">JMM规范的 happen-before 原则</span>。</li> </ul> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_29479041/article/details/84992673"  rel="nofollow">并发编程之ReentrantLock公平锁和非公平锁原理详解</a></p> </div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-80356.htm">C ++中二进制矩阵的最短路径</a></p>
+                                                        <p>下一个：<a href="/news/article-81088.htm">公务员2021国考报名人数统计表图片（国考公务员2021年报名人数）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-77630.htm" title="动物接种疫苗多少钱一针啊图片 动物接种疫苗多少钱一针啊图片大全">动物接种疫苗多少钱一针啊图片 动物接种疫苗多少钱一针啊图片大全</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-v2ray.htm" title="1月31日 | Stair Node节点订阅每天更新19.6M/S免费节点订阅链接，付费节点订阅推荐">1月31日 | Stair Node节点订阅每天更新19.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="2月18日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">2月18日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-subscribe-node.htm" title="3月3日 | Stair Node节点订阅每天更新22.9M/S免费节点订阅链接，付费节点订阅推荐">3月3日 | Stair Node节点订阅每天更新22.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-free-node-subscribe.htm" title="2月12日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐">2月12日 | Stair Node节点订阅每天更新19.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-v2ray-subscribe.htm" title="2月13日 | Stair Node节点订阅每天更新21.3M/S免费节点订阅链接，付费节点订阅推荐">2月13日 | Stair Node节点订阅每天更新21.3M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-17-clash-v2ray-ss-ssr.htm" title="2月17日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐">2月17日 | Stair Node节点订阅每天更新23M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-51484.htm" title="宠物粮的广告词（宠物粮食宣传语）">宠物粮的广告词（宠物粮食宣传语）</a></li>
+                        <li class="py-2"><a href="/news/article-70937.htm" title="领养宠物协议书范本图片模板高清（领养宠物协议有法律效力吗）">领养宠物协议书范本图片模板高清（领养宠物协议有法律效力吗）</a></li>
+                        <li class="py-2"><a href="/news/article-46958.htm" title="美联众合动物医院在哪里 美联众合动物医院总院在哪">美联众合动物医院在哪里 美联众合动物医院总院在哪</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">77</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
