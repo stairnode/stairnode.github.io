@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-85316.htm" />
+    <title>动态指针时钟：利用pyqt5制作指针钟表显示实时时间</title>
+        <meta name="description" content="【阅读全文】 文末附完整源代码实现过程... 想实现这样一个功能，然后pyqt5中又没有现成的组件可以使用，于是就想着只能通过绘图的方式来实现。说到绘图的话，turtle框架无疑是最常见的选择，但其实" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-85316.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="动态指针时钟：利用pyqt5制作指针钟表显示实时时间" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/3719089ff2749a8ee8abb8213db181f0.webp" />
+        <meta property="og:release_date" content="2025-03-31T08:40:51" />
+    <meta property="og:updated_time" content="2025-03-31T08:40:51" />
+        <meta property="og:description" content="【阅读全文】 文末附完整源代码实现过程... 想实现这样一个功能，然后pyqt5中又没有现成的组件可以使用，于是就想着只能通过绘图的方式来实现。说到绘图的话，turtle框架无疑是最常见的选择，但其实" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="动态指针时钟：利用pyqt5制作指针钟表显示实时时间">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">动态指针时钟：利用pyqt5制作指针钟表显示实时时间</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night-eighties"> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/65beda103e62ab02360ff8f2ffd4c5ca.jpg" alt="动态指针时钟：利用pyqt5制作指针钟表显示实时时间"></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s?__biz=MzA3ODk1Mzg0Mg==&amp;mid=2649851752&amp;idx=1&amp;sn=b8cadfdad7480a8eeb362f7471cf1689&amp;chksm=87bfcb75b0c84263ea7e13a2170313f9c77414d0d8d4d8a37e249a1f6121a5b314ce45665c04&amp;token=182407134&amp;lang=zh_CN#rd"  rel="nofollow">【阅读全文】</a></p> <p>文末附完整源代码实现过程...</p> <p>想实现这样一个功能，然后pyqt5中又没有现成的组件可以使用，于是就想着只能通过绘图的方式来实现。说到绘图的话，turtle框架无疑是最常见的选择，但其实通过pyqt5的QPainter组件也是可以实现的。而且最后呈现出来的效果还是挺漂亮的。</p> <p>实现思路：通过使用pyqt5的QPainter组件来绘制好时钟的图表，最后通过定时器不断的改变当前当前时间在图表上面的显示位置。这样最终就实现了一个指针时钟在不断的走动的过程。</p> <p>和前面的UI应用一样，我们用到的UI相关的组件库还是这三个。</p> <pre><code class="language-python">from PyQt5.QtCore import * from PyQt5.QtGui import * from PyQt5.QtWidgets import *</code></pre> <p>这次新使用了一个数学计算库，因为牵扯到数据计算相关的部分。</p> <pre><code class="language-python">from math import *</code></pre> <p>应用操作相关的模块</p> <pre><code class="language-python">import sys</code></pre> <p>动态时钟的主要实现过程我放在下面了，有需要的朋友可以自己研究一下。</p> <pre><code class="language-python">class PointerClock(QWidget):     def __init__(self):         super().__init__()         self.setWindowTitle("动态指针时钟  公众号：[Python 集中营]")         self.setWindowIcon(QIcon('clock.ico'))         self.timer = QTimer()         # 设置窗口计时器         self.timer.timeout.connect(self.update)         self.timer.start(1000)      def paintEvent(self, event):         '''         实时刷新指针图像         :param event:         :return:         '''         '''分别定义小时、分钟、秒钟的坐标点'''         '''         QPoint(int x, int y);创建坐标点，x、y分别代表横坐标、纵坐标         '''         hour_point = [QPoint(7, 8), QPoint(-7, 8), QPoint(0, -30)]         min_point = [QPoint(7, 8), QPoint(-7, 8), QPoint(0, -65)]         secn_point = [QPoint(7, 8), QPoint(-7, 8), QPoint(0, -80)]          '''定义三种颜色、用于后面设置三种指针的颜色'''         hour_color = QColor(182, 98, 0, 182)         min_color = QColor(0, 130, 130, 155)         sec_color = QColor(0, 155, 227, 155)          '''获取QWidget对象的宽度和长度的最小值'''         min_size = min(self.width(), self.height())          painter = QPainter(self)  # 创建坐标系图像绘制对象         painter.setRenderHint(QPainter.Antialiasing)          # 将QWidget对象的中心位置作为绘制的中心坐标点         painter.translate(self.width() / 2, self.height() / 2)          # 对尺寸进行缩放         painter.scale(int(min_size / 200), int(min_size / 200))          # 保存状态         painter.save()          '''绘制时钟表盘的时间刻度线'''          for a in range(0, 60):             if (a % 5) != 0:                 # 每1/60绘制一个刻度线作为分钟刻度线                 painter.setPen(min_color)                 painter.drawLine(92, 0, 96, 0)             else:                 # 每5/60绘制一个刻度线作为小时刻度线                 painter.setPen(hour_color)                 painter.drawLine(88, 0, 96, 0)  # 绘制小时刻度线             # 每分钟旋转6度             painter.rotate(360 / 60)         # 恢复状态         painter.restore()          '''绘制时钟表盘上面的数字'''         # 保存状态         painter.save()         # 获取字体对象         font = painter.font()         # 设置粗体         font.setBold(True)         painter.setFont(font)         # 获取字体大小         font_size = font.pointSize()         # 设置之前定义好的颜色         painter.setPen(hour_color)         hour_num = 0         radius = 100         for i in range(0, 12):             # 按照12小时制，每三个小时绘制一个小时数字，需要遍历4次             hour_num = i + 3  # 按QT-Qpainter的坐标系换算，3小时的刻度线对应坐标轴0度             if hour_num &gt; 12:                 hour_num = hour_num - 12             # 根据字体的大小计算出写入小时数字的x、y的位置             x = radius * 0.8 * cos(i * 30 * pi / 180.0) - font_size             y = radius * 0.8 * sin(i * 30 * pi / 180.0) - font_size / 2.0             width = font_size * 2             height = font_size             painter.drawText(QRectF(x, y, width, height), Qt.AlignCenter, str(hour_num))         # 恢复状态         painter.restore()          '''绘制时钟表盘的时、分、秒的指针'''          # 获取当前时间         time = QTime.currentTime()          # 绘制小时指针         painter.save()         # 取消轮廓线         painter.setPen(Qt.NoPen)         # 设置小时指针的颜色         painter.setBrush(hour_color)         # 小时指针逆时针旋转         painter.rotate(30 * (time.hour() + time.minute() / 60))         # 绘制时钟指针         painter.drawConvexPolygon(QPolygonF(hour_point))         # 恢复状态         painter.restore()          # 绘制分钟指针         painter.save()         # 取消轮廓线         painter.setPen(Qt.NoPen)         # 设置分钟指针的颜色         painter.setBrush(min_color)         # 分钟指针逆时针旋转         painter.rotate(6 * (time.minute() + time.second() / 60))         # 绘制分钟指针         painter.drawConvexPolygon(QPolygonF(min_point))         # 恢复状态         painter.restore()          # 绘制秒钟指针         painter.save()         # 取消轮廓线         painter.setPen(Qt.NoPen)         # 设置秒针颜色         painter.setBrush(sec_color)         # 秒钟指针逆时针旋转         painter.rotate(6 * time.second())         # 绘制秒钟指针         painter.drawConvexPolygon(QPolygonF(secn_point))         # 恢复状态         painter.restore()</code></pre> <p>最后，还是通过main()函数直接启动整个App。</p> <pre><code class="language-python">if __name__ == "__main__":     app = QApplication(sys.argv)     form = PointerClock()     form.show()     app.exec_()</code></pre> <p>公众号内回复"动态时钟"，获取完整源代码。</p> <p>【往期精选】</p> <p>python 日志中最亮的仔，是喜欢的花里胡哨吖...</p> <p>hashlib.md5()函数来筛选出系统重复文件并移除...</p> <p>哈撒给，英雄联盟全皮肤下载器来了...</p> <p>PyQt5的敏感词检测工具制作，运营者的福音...</p> <p>手绘图片生成器：以雪容融为例一键生成...</p> <p>刚刚出炉的冬奥会吉祥物：冰墩墩，附源码...</p> <p>最优美的表格查看插件：tabulate</p> <p>抖音同款课堂点名系统，PyQt5写起来很简单...</p> <p>开工啦！批量向PDF文件添加中文水印...</p> <p>大年初二、做了一个windows通知管理器！</p> <p>百度图片下载器2.0</p> <p>gif动态图片生成器，多张图片组合后生成动图...</p> </p></div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-84589.htm">大型颗粒饲料机械设备厂家（大型颗粒饲料机械设备厂家排名）</a></p>
+                                                        <p>下一个：<a href="/news/article-85317.htm">家用猫粮制作机器多少钱一台（猫粮制作流程）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81725.htm" title="理解OIDC协议和认证机制">理解OIDC协议和认证机制</a></li>
+                        <li class="py-2"><a href="/news/article-82457.htm" title="动物防疫条件情况和防疫制度执行情况（动物防疫条件情况和防疫制度执行情况一样吗）">动物防疫条件情况和防疫制度执行情况（动物防疫条件情况和防疫制度执行情况一样吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-node-subscribe-links.htm" title="3月22日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐">3月22日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-85317.htm" title="家用猫粮制作机器多少钱一台（猫粮制作流程）">家用猫粮制作机器多少钱一台（猫粮制作流程）</a></li>
+                        <li class="py-2"><a href="/news/article-80356.htm" title="C ++中二进制矩阵的最短路径">C ++中二进制矩阵的最短路径</a></li>
+                        <li class="py-2"><a href="/news/article-86040.htm" title="宠物粮食加工厂设备有哪些厂家生产饲料 宠物粮食加工厂设备有哪些厂家生产饲料的">宠物粮食加工厂设备有哪些厂家生产饲料 宠物粮食加工厂设备有哪些厂家生产饲料的</a></li>
+                        <li class="py-2"><a href="/news/article-76277.htm" title="无货源网店怎么发货操作流程（无货源网店怎么发货操作流程图）">无货源网店怎么发货操作流程（无货源网店怎么发货操作流程图）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-node-subscribe.htm" title="3月17日 | Stair Node节点订阅每天更新21.7M/S免费节点订阅链接，付费节点订阅推荐">3月17日 | Stair Node节点订阅每天更新21.7M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-67043.htm" title="动物疫苗接种时间表图片大全高清 动物疫苗接种时间表图片大全高清版">动物疫苗接种时间表图片大全高清 动物疫苗接种时间表图片大全高清版</a></li>
+                        <li class="py-2"><a href="/news/article-77630.htm" title="动物接种疫苗多少钱一针啊图片 动物接种疫苗多少钱一针啊图片大全">动物接种疫苗多少钱一针啊图片 动物接种疫苗多少钱一针啊图片大全</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
