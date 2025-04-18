@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-97841.htm" />
+    <title>Java 的程序逻辑控制</title>
+        <meta name="description" content="在程序开发的过程之中一共会存在三种程序逻辑：顺序结构、分支结构、循环结构，对于之前所编写的代码大部分都是顺序结构的定义，即：所有的程序将按照定义的代码顺序依次执行。  if 分支结构主要是针对于关系表" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-97841.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="Java 的程序逻辑控制" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/a5ac000d97c0f4144822616e05d549da.webp" />
+        <meta property="og:release_date" content="2025-04-17T09:00:48" />
+    <meta property="og:updated_time" content="2025-04-17T09:00:48" />
+        <meta property="og:description" content="在程序开发的过程之中一共会存在三种程序逻辑：顺序结构、分支结构、循环结构，对于之前所编写的代码大部分都是顺序结构的定义，即：所有的程序将按照定义的代码顺序依次执行。  if 分支结构主要是针对于关系表" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java 的程序逻辑控制">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Java 的程序逻辑控制</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>在程序开发的过程之中一共会存在三种程序逻辑：顺序结构、分支结构、循环结构，对于之前所编写的代码大部分都是顺序结构的定义，即：所有的程序将按照定义的代码顺序依次执行。</p> </h1> <p>if 分支结构主要是针对于关系表达式进行判断处理的分支操作。对于分支语句主要有三类的使用形式，使用的关键字：if、else。</p> </h1> <p>switch 是一个开关语句，它主要是根据内容来进行的判断，需要注意的是 switch 中可以判断的只能够是数据（int、char、枚举、String）,而不能使用逻辑判断。</p> <p>举例：</p> <pre><code class="language-java">&nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp;int ch=2;  &nbsp; &nbsp; &nbsp; &nbsp;switch (ch){  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case 2:  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System.out.println("设置的内容是2。");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case 1:{  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System.out.println("设置的内容是1。");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;default:{  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System.out.println("没有内容满足。");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}  &nbsp; &nbsp; &nbsp; &nbsp;}  &nbsp; &nbsp; }  &nbsp; &nbsp; /**  &nbsp; &nbsp; &nbsp;* 输出结果：  &nbsp; &nbsp; &nbsp;* 设置的内容是2。  &nbsp; &nbsp; &nbsp;* 设置的内容是1。  &nbsp; &nbsp; &nbsp;* 没有内容满足。  &nbsp; &nbsp; &nbsp;*/  &nbsp; &nbsp; }</code></pre> <p>switch 语句进行设计的时候，如果你在每一个 case 后面没有追加 break 语句，那么会在第一个匹配的 case 之后继续执行，一直到全部的 switch 中后续代码执行完毕或者遇见 break。</p> <p>举例：</p> <pre><code class="language-java">&nbsp; &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp;int ch=2;  &nbsp; &nbsp; &nbsp; &nbsp;switch (ch){  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case 2:  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System.out.println("设置的内容是2。");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case 1:{  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System.out.println("设置的内容是1。");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;default:{  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System.out.println("没有内容满足。");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}  &nbsp; &nbsp; &nbsp; &nbsp;}  &nbsp; &nbsp; }  &nbsp; &nbsp; /**  &nbsp; &nbsp; &nbsp;* 输出结果：  &nbsp; &nbsp; &nbsp;*设置的内容是2。  &nbsp; &nbsp; &nbsp;*/</code></pre> </h1> <p>所谓的循环结构指的是某一段代码被重复执行的处理操作，在程序之中提供有while 语句来实现循环的定义，该语句有两类使用形式：</p> <p>while 循环：</p> <pre><code class="language-java">&nbsp; &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; int sum = 0;// 保存最终的计算总和  &nbsp; &nbsp; &nbsp; &nbsp; int num = 1;//进行循环控制  &nbsp; &nbsp; &nbsp; &nbsp; while (num &lt;= 100) { //循环的执行条件  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sum += num; //累加  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; num++; //修改循环条件  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(sum);//5050    &nbsp; &nbsp; }</code></pre> <p>do...while 循环：</p> <pre><code class="language-java">&nbsp; &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; int sum = 0;// 保存最终的计算总和  &nbsp; &nbsp; &nbsp; &nbsp; int num = 1;//进行循环控制  &nbsp; &nbsp; &nbsp; &nbsp; do { //循环的执行条件  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sum += num; //累加  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; num++; //修改循环条件  &nbsp; &nbsp; &nbsp; &nbsp; } while (num &lt;= 100);  &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(sum);//5050    &nbsp; &nbsp; }</code></pre> </h1> <p>while 循环是先判断后执行，而 do...while先执行一次后判断。开发中能见到 do...while循环的几率几乎为1%，99%的情况下首选的肯定是 while 循环。</p> </h1> <p>for 循环也是一种常规的使用结构。</p> <p>举例：</p> <pre><code>&nbsp; &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; int sum = 0;// 保存最终的计算总和  &nbsp; &nbsp; &nbsp; &nbsp; for (int i = 0; i &lt;= 100; i++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sum += i; //累加  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(sum);//5050  &nbsp; &nbsp; }</code></pre> <p>对于 while 和 for 循环的选择只有一个参考标准：</p> <p>1. 在明确确定循环次数的情况下优先选择 for 循环；</p> <p>2. 在不知道循环次数但是直到循环结束条件的情况下使用 while 循环；</p> </h1> <p>在循环语句定义的时候还有两个控制语句：break、continue</p> <p>1. break 主要的功能是退出整个循环结构</p> <p>举例：</p> <pre><code>&nbsp; &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; for (int i = 0; i &lt;10 ; i++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (i==3){  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.print(i+" "); //0 1 2  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; }</code></pre> <p>2. continue 严格来讲只是结束当前的一次调用（结束当前循环）</p> <p>举例：</p> <pre><code>&nbsp; &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; for (int i = 0; i &lt;10 ; i++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (i==3){  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.print(i+" "); //0 1 2 4 5 6 7 8 9  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; }</code></pre> <p>当执行到了 continue 的时候就表示当前的语句之后后续代码不再执行，而直接进行后续的判断处理。</p> </h1> <p>在一个循环语句之中嵌套其它的循环语句就称为循环嵌套处理，循环嵌套层次越多时间复杂度就越高，那么下面通过循环的嵌套观察两个简单的程序。</p> <p>举例“：打印乘法口诀表</p> <pre><code> &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; for (int i = 1; i &lt;= 9; i++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j = 1; j &lt; 10; j++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (j &gt; i) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.print(j + "*" + i + "=" + (i * j) + " ");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println();  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; }</code></pre> <p>举例：打印三角形</p> <pre><code> &nbsp; public static void main(String[] args) {  &nbsp; &nbsp; &nbsp; &nbsp; for (int i = 0; i &lt;= 9; i++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j = 0; j &lt; 9 - i; j++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.print(" ");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j = 0; j &lt; 2 * i + 1; j++) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.print("*");  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println();  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; }</code></pre> </p></div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-97840.htm">关于MySQL支持的所有字符集的查询是什么？</a></p>
+                                                        <p>下一个：<a href="/news/article-98520.htm">我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-node-share-links.htm" title="3月8日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐">3月8日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-65798.htm" title="我们如何获得排序的MySQL输出？">我们如何获得排序的MySQL输出？</a></li>
+                        <li class="py-2"><a href="/news/article-74235.htm" title="JavaScript查找字符串中的字母距离">JavaScript查找字符串中的字母距离</a></li>
+                        <li class="py-2"><a href="/news/article-68322.htm" title="学宠物美容师要学多久（学宠物美容师怎么样,有前景吗）">学宠物美容师要学多久（学宠物美容师怎么样,有前景吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-12-free-v2ray.htm" title="4月12日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐">4月12日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-71583.htm" title="Feign的hystrix熔断器不起作用">Feign的hystrix熔断器不起作用</a></li>
+                        <li class="py-2"><a href="/news/article-94899.htm" title="我所在的城市有一家宠物医院的英语怎么写 我所在的城市有一家宠物医院的英语怎么写">我所在的城市有一家宠物医院的英语怎么写 我所在的城市有一家宠物医院的英语怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-76277.htm" title="无货源网店怎么发货操作流程（无货源网店怎么发货操作流程图）">无货源网店怎么发货操作流程（无货源网店怎么发货操作流程图）</a></li>
+                        <li class="py-2"><a href="/news/article-88189.htm" title="宠物粮食生产厂家排名榜 宠物粮食生产厂家排名榜前十名">宠物粮食生产厂家排名榜 宠物粮食生产厂家排名榜前十名</a></li>
+                        <li class="py-2"><a href="/news/article-84588.htm" title="掌握JavaScript中的迭代器和生成器，顺便了解一下async、await的原理">掌握JavaScript中的迭代器和生成器，顺便了解一下async、await的原理</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

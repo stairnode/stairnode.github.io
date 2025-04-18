@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-97840.htm" />
+    <title>关于MySQL支持的所有字符集的查询是什么？</title>
+        <meta name="description" content="借助以下查询，我们可以看到MySQL支持的所有字符集- mysql&gt;&nbsp;Show&nbsp;Character&nbsp;Set; +-----------+--------------" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-97840.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="关于MySQL支持的所有字符集的查询是什么？" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/a5ac000d97c0f4144822616e05d549da.webp" />
+        <meta property="og:release_date" content="2025-04-17T09:00:48" />
+    <meta property="og:updated_time" content="2025-04-17T09:00:48" />
+        <meta property="og:description" content="借助以下查询，我们可以看到MySQL支持的所有字符集- mysql&gt;&nbsp;Show&nbsp;Character&nbsp;Set; +-----------+--------------" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="关于MySQL支持的所有字符集的查询是什么？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">关于MySQL支持的所有字符集的查询是什么？</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>借助以下查询，我们可以看到MySQL支持的所有字符集-</p> <pre>mysql&gt;&nbsp;Show&nbsp;Character&nbsp;Set; +-----------+-----------------------------+---------------------+--------+ |&nbsp;Charset&nbsp;&nbsp;&nbsp;|&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Default&nbsp;collation&nbsp;&nbsp;&nbsp;|&nbsp;Maxlen&nbsp;| +----------&nbsp;+-----------------------------+---------------------+--------+ |&nbsp;big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Big5&nbsp;Traditional&nbsp;Chinese&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;big5_chinese_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;dec8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DEC&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;dec8_swedish_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp850&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp850_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;hp8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;HP&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;hp8_english_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;koi8r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;KOI8-R&nbsp;Relcom&nbsp;Russian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;koi8r_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;latin1&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1252&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;latin1_swedish_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;latin2&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-2&nbsp;Central&nbsp;European&nbsp;|&nbsp;latin2_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;swe7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;7bit&nbsp;Swedish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;swe7_swedish_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;ascii&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;US&nbsp;ASCII&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ascii_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;ujis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;EUC-JP&nbsp;Japanese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ujis_japanese_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;| |&nbsp;sjis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Shift-JIS&nbsp;Japanese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;sjis_japanese_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;hebrew&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-8&nbsp;Hebrew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;hebrew_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;tis620&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;TIS620&nbsp;Thai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;tis620_thai_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;euckr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;EUC-KR&nbsp;Korean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;euckr_korean_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;koi8u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;KOI8-U&nbsp;Ukrainian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;koi8u_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;gb2312&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;GB2312&nbsp;Simplified&nbsp;Chinese&nbsp;&nbsp;&nbsp;|&nbsp;gb2312_chinese_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;greek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-7&nbsp;Greek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;greek_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp1250&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Central&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1250_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;gbk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;GBK&nbsp;Simplified&nbsp;Chinese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;gbk_chinese_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;latin5&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-9&nbsp;Turkish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;latin5_turkish_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;armscii8&nbsp;&nbsp;|&nbsp;ARMSCII-8&nbsp;Armenian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;armscii8_general_ci&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UTF-8&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf8_general_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;| |&nbsp;ucs2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UCS-2&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ucs2_general_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;cp866&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;Russian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp866_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;keybcs2&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;Kamenicky&nbsp;Czech-Slovak&nbsp;&nbsp;|&nbsp;keybcs2_general_ci&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;macce&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mac&nbsp;Central&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;macce_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;macroman&nbsp;&nbsp;|&nbsp;Mac&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;macroman_general_ci&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;Central&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp852_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;latin7&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-13&nbsp;Baltic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;latin7_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf8mb4&nbsp;&nbsp;&nbsp;|&nbsp;UTF-8&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf8mb4_general_ci&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;| |&nbsp;cp1251&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Cyrillic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1251_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UTF-16&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf16_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;| |&nbsp;cp1256&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Arabic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1256_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp1257&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Baltic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1257_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UTF-32&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf32_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;| |&nbsp;binary&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Binary&nbsp;pseudo&nbsp;charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;binary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;geostd8&nbsp;&nbsp;&nbsp;|&nbsp;GEOSTD8&nbsp;Georgian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;geostd8_general_ci&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp932&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;SJIS&nbsp;for&nbsp;Windows&nbsp;Japanese&nbsp;&nbsp;&nbsp;|&nbsp;cp932_japanese_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;eucjpms&nbsp;&nbsp;&nbsp;|&nbsp;UJIS&nbsp;for&nbsp;Windows&nbsp;Japanese&nbsp;&nbsp;&nbsp;|&nbsp;eucjpms_japanese_ci&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;| +-----------+-----------------------------+---------------------+--------+ 39&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.14&nbsp;sec)</pre> <div></div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-97067.htm">深圳宠物店营业执照办理流程（深圳开个宠物店大概要多少钱）</a></p>
+                                                        <p>下一个：<a href="/news/article-97841.htm">Java 的程序逻辑控制</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-v2ray.htm" title="3月6日 | Stair Node节点订阅每天更新20.8M/S免费节点订阅链接，付费节点订阅推荐">3月6日 | Stair Node节点订阅每天更新20.8M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-clash-v2ray-ss-ssr.htm" title="3月5日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐">3月5日 | Stair Node节点订阅每天更新18.6M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-86744.htm" title="宠物领养协议简单版本图片高清（宠物领养协议简单版本图片高清下载）">宠物领养协议简单版本图片高清（宠物领养协议简单版本图片高清下载）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-8-clash-v2ray-ss-ssr.htm" title="4月8日 | Stair Node节点订阅每天更新21.9M/S免费节点订阅链接，付费节点订阅推荐">4月8日 | Stair Node节点订阅每天更新21.9M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-70937.htm" title="领养宠物协议书范本图片模板高清（领养宠物协议有法律效力吗）">领养宠物协议书范本图片模板高清（领养宠物协议有法律效力吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-24-node-share-links.htm" title="3月24日 | Stair Node节点订阅每天更新20M/S免费节点订阅链接，付费节点订阅推荐">3月24日 | Stair Node节点订阅每天更新20M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-91896.htm" title="领养狗狗协议书怎么写（领养犬协议）">领养狗狗协议书怎么写（领养犬协议）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-29-clash-v2ray-ss-ssr.htm" title="3月29日 | Stair Node节点订阅每天更新19.5M/S免费节点订阅链接，付费节点订阅推荐">3月29日 | Stair Node节点订阅每天更新19.5M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-69620.htm" title="宠物店猫粮按斤卖吗 宠物店猫粮按斤卖吗多少钱">宠物店猫粮按斤卖吗 宠物店猫粮按斤卖吗多少钱</a></li>
+                        <li class="py-2"><a href="/news/article-78313.htm" title="动物医院工作怎么样 动物医院工作怎么样啊">动物医院工作怎么样 动物医院工作怎么样啊</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
