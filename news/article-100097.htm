@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-100097.htm" />
+    <title>vue中v-model的三种修饰符:lazy,numer,trim</title>
+        <meta name="description" content="lazy 修饰符: 使模型绑定的数据只有在失去焦点或者是按下回车时才会更新 &lt;input type="text" id="inp" v-model.lazy="message"&gt;  使用l" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-100097.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="vue中v-model的三种修饰符:lazy,numer,trim" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/dedda317964a035d91a8990f773d1f0a.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:03:19" />
+    <meta property="og:updated_time" content="2025-04-20T09:03:19" />
+        <meta property="og:description" content="lazy 修饰符: 使模型绑定的数据只有在失去焦点或者是按下回车时才会更新 &lt;input type="text" id="inp" v-model.lazy="message"&gt;  使用l" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue中v-model的三种修饰符:lazy,numer,trim">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue中v-model的三种修饰符:lazy,numer,trim</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>lazy 修饰符: 使模型绑定的数据只有在失去焦点或者是按下回车时才会更新</p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> id<span class="token operator">=</span><span class="token string">"inp"</span> v<span class="token operator">-</span>model<span class="token punctuation">.</span>lazy<span class="token operator">=</span><span class="token string">"message"</span><span class="token operator">&gt;</span> </code></pre> <p>使用lazy可以使数据不需要多次重写，减少消耗。<br /> 在默认情况下，在输入框中无论我们输入的是字母还是数字，都是会被当做是字符串类型进行处理<br /> number 修饰符: 使输入框中输入的内容自动转换为数字类型</p> <pre><code class="prism language-javascript">  <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">""</span> id<span class="token operator">=</span><span class="token string">"age"</span> v<span class="token operator">-</span>model<span class="token punctuation">.</span>number<span class="token operator">=</span><span class="token string">"age"</span><span class="token operator">&gt;</span> </code></pre> <p>trim 修饰符: 过滤掉内容左右两边的的空格</p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">""</span> id<span class="token operator">=</span><span class="token string">"str"</span> v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">"str"</span><span class="token operator">&gt;</span> </code></pre> <p>浏览器显示空格会默认过滤掉，但是里面的数据并没有过滤<img decoding="async" src="http://img.555519.xyz/uploads/20221208/aa2ab51cdeb6e7d6e74ed4376f268e21.jpg" alt="vue中v-model的三种修饰符:lazy,numer,trim"></p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">""</span> id<span class="token operator">=</span><span class="token string">"str"</span> v<span class="token operator">-</span>model<span class="token punctuation">.</span>trim<span class="token operator">=</span><span class="token string">"str"</span><span class="token operator">&gt;</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221208/ab18045c122d622bf57c732b37ea5128.jpg" alt="vue中v-model的三种修饰符:lazy,numer,trim"><br /> 源码：</p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token constant">DOCTYPE</span> html<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">&gt;</span>  <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"viewport"</span> content<span class="token operator">=</span><span class="token string">"width=device-width, initial-scale=1.0"</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>meta http<span class="token operator">-</span>equiv<span class="token operator">=</span><span class="token string">"X-UA-Compatible"</span> content<span class="token operator">=</span><span class="token string">"ie=edge"</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span>Document<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://cdn.jsdelivr.net/npm/vue"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span>  <span class="token operator">&lt;</span>body<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>label <span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"inp"</span><span class="token operator">&gt;</span>     <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> lazy 修饰符<span class="token punctuation">:</span> 使模型绑定的数据只有在失去焦点或者是按下回车时才会更新 <span class="token operator">--</span><span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> id<span class="token operator">=</span><span class="token string">"inp"</span> v<span class="token operator">-</span>model<span class="token punctuation">.</span>lazy<span class="token operator">=</span><span class="token string">"message"</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>br<span class="token operator">&gt;</span>   <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 在默认情况下，在输入框中无论我们输入的是字母还是数字，都是会被当做是字符串类型进行处理 <span class="token operator">--</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> number 修饰符<span class="token punctuation">:</span> 使输入框中输入的内容自动转换为数字类型 <span class="token operator">--</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>label <span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"age"</span><span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">""</span> id<span class="token operator">=</span><span class="token string">"age"</span> v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">"age"</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>br<span class="token operator">&gt;</span>   <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> trim 修饰符<span class="token punctuation">:</span> 过滤掉内容左右两边的的空格 <span class="token operator">--</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>label <span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"str"</span><span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">""</span> id<span class="token operator">=</span><span class="token string">"str"</span> v<span class="token operator">-</span>model<span class="token punctuation">.</span>trim<span class="token operator">=</span><span class="token string">"str"</span><span class="token operator">&gt;</span>   <span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>br<span class="token operator">&gt;</span>   <span class="token operator">&lt;</span>h2<span class="token operator">&gt;</span>您输入的字符<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>str<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>  <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>   <span class="token comment">//创建Vue实例,得到 ViewModel</span>   <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>     el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>     data<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span>       message<span class="token punctuation">:</span> <span class="token string">'你好!'</span><span class="token punctuation">,</span>       age<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>       str<span class="token punctuation">:</span> <span class="token string">''</span>     <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//定义数据</span>     methods<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//定义函数</span>     computed<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">//定义计算函数</span>     filters<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">//</span>   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span>  <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">&gt;</span> </code></pre> </p></div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-99307.htm">天津宠物领养中心在哪? </a></p>
+                                                        <p>下一个：<a href="/news/article-100098.htm">动物医院属于什么行业类型（动物医院所属行业）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70261.htm" title="动物疫苗和人体疫苗的区别是什么意思啊 动物疫苗和人体疫苗的区别是什么意思啊视频">动物疫苗和人体疫苗的区别是什么意思啊 动物疫苗和人体疫苗的区别是什么意思啊视频</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-node-subscribe.htm" title="3月4日 | Stair Node节点订阅每天更新19.1M/S免费节点订阅链接，付费节点订阅推荐">3月4日 | Stair Node节点订阅每天更新19.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-74908.htm" title="动物疫苗证在哪里办理（动物疫苗证是什么样的）">动物疫苗证在哪里办理（动物疫苗证是什么样的）</a></li>
+                        <li class="py-2"><a href="/news/article-73568.htm" title="对宠物医院好评的文案（宠物医院好评文字）">对宠物医院好评的文案（宠物医院好评文字）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-free-node-subscribe-links.htm" title="4月3日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐">4月3日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-67041.htm" title="猫粮加工厂需要什么设备（猫粮加工厂要哪些手续）">猫粮加工厂需要什么设备（猫粮加工厂要哪些手续）</a></li>
+                        <li class="py-2"><a href="/news/article-81725.htm" title="理解OIDC协议和认证机制">理解OIDC协议和认证机制</a></li>
+                        <li class="py-2"><a href="/news/article-78312.htm" title="全国动物疫苗生产厂家有哪些公司呢（国内动物疫苗龙头企业）">全国动物疫苗生产厂家有哪些公司呢（国内动物疫苗龙头企业）</a></li>
+                        <li class="py-2"><a href="/news/article-91896.htm" title="领养狗狗协议书怎么写（领养犬协议）">领养狗狗协议书怎么写（领养犬协议）</a></li>
+                        <li class="py-2"><a href="/news/article-72253.htm" title="兰州宠物交易平台电话（兰州宠物交易市场）">兰州宠物交易平台电话（兰州宠物交易市场）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">65</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
