@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://stairnode.github.io/news/article-109670.htm" />
+    <title>encodeURI()、encodeURIComponent()区别及使用场景</title>
+        <meta name="description" content="1 区别 1.1encodeURI() encodeURI()通常用于转码整个 URL，不会对URL 元字符以及语义字符进行转码，URL元字符：  URL 元字符：分号（;），逗号（,），斜杠（/），" />
+        <link rel="icon" href="/assets/website/img/stairnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Stair Node免费订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://stairnode.github.io/news/article-109670.htm" />
+    <meta property="og:site_name" content="Stair Node免费订阅官网" />
+    <meta property="og:title" content="encodeURI()、encodeURIComponent()区别及使用场景" />
+    <meta property="og:image" content="https://stairnode.github.io/uploads/20240805-1/c2b6001f186aabd261e10d50885cee5f.webp" />
+        <meta property="og:release_date" content="2025-05-02T09:23:07" />
+    <meta property="og:updated_time" content="2025-05-02T09:23:07" />
+        <meta property="og:description" content="1 区别 1.1encodeURI() encodeURI()通常用于转码整个 URL，不会对URL 元字符以及语义字符进行转码，URL元字符：  URL 元字符：分号（;），逗号（,），斜杠（/），" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="encodeURI()、encodeURIComponent()区别及使用场景">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/stairnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y08WLH1WBP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y08WLH1WBP');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Stair Node</span>
+                        </a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav">
+                                        <li class="nav-item"><a href="/" class="nav-link"><span>首页</span></a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link"><span>免费节点</span></a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link"><span>推荐机场</span></a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link"><span>客户端</span></a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link"><span>新闻资讯</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/stairnode/bg_4.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span> 
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">encodeURI()、encodeURIComponent()区别及使用场景</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb my-5" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h3>1 区别</h3> <h4>1.1<code>encodeURI()</code></h4> <p><code>encodeURI()</code>通常用于转码整个 URL，不会对URL 元字符以及语义字符进行转码，URL元字符：</p> <blockquote> <p>URL 元字符：分号（<code>;</code>），逗号（<code>,</code>），斜杠（<code>/</code>），问号（<code>?</code>），冒号（<code>:</code>），at（<code>@</code>），<code>&amp;</code>，等号（<code>=</code>），加号（<code>+</code>），美元符号（<code>$</code>），井号（<code>#</code>）</p> </blockquote> <blockquote> <p>语义字符：<code>a-z</code>，<code>A-Z</code>，<code>0-9</code>，连词号（<code>-</code>），下划线（<code>_</code>），点（<code>.</code>），感叹号（<code>!</code>），波浪线（<code>~</code>），星号（<code>*</code>），单引号（<code>'</code>），圆括号（<code>()</code>）</p> </blockquote> <h4>1.2<code>encodeURIComponent()</code></h4> <p><code>encodeURIComponent()</code>通常只用于转码URL组成部分，如URL中<code>?</code>后的一串；会转码除了语义字符之外的所有字符，即<strong>元字符也会被转码</strong><br /><strong>注：若整个链接被<code>encodeURIComponent()</code>转码，则该链接无法被浏览器访问，需要解码之后才可以正常访问。</strong></p> <h3>2 使用场景</h3> <p>  对于无特殊参数的链接，都可以使用<code>encodeURI()</code>进行转码，那什么特殊情况需要用到<code>encodeURIComponent()</code>呢？通常是链接带着一些特殊参数的时候，就比如以下链接：</p> <pre><code class="prism language-javascript">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>baidu<span class="token punctuation">.</span>com<span class="token operator">/</span>s<span class="token operator">?</span>returnURL<span class="token operator">=</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">www.test.com</span><span class="token regex-delimiter">/</span></span></code></pre> <p>链接内包含一个回调地址，回调地址是另外一个URL，此时我们就需要使用<code>encodeURIComponent()</code>对回调地址进行转码，这样一来，URL中就不会出现多个<code>http://</code>，多个<code>&amp;</code>这样的特殊字符；方便对回调地址进行处理；以上链接处理如下：</p> <pre><code class="prism language-javascript"><span class="token comment">// 对URL中的回调链接进行转码</span><span class="token string">'https://www.baidu.com/s?returnURL='</span><span class="token operator">+</span><span class="token function">encodeURIComponent</span><span class="token punctuation">(</span><span class="token string">'http://www.test.com/'</span><span class="token punctuation">)</span><span class="token comment">//输出: "https://www.baidu.com/s?returnURL=http%3A%2F%2Fwww.test.com%2F"</span></code></pre> <blockquote> <p>参考博客：URL 编码与解码使用详解</p> </blockquote> </div> 			
+                        <div class="col-md-12 mt-5">
+                                                        <p>上一个：<a href="/news/article-109667.htm">asyncio 系列、asyncio 的协程与任务</a></p>
+                                                        <p>下一个：<a href="/news/article-110544.htm">不能养的宠物（不能养的宠物可以还回宠物店吗）</a></p>
+                                                    </div>
+
+                                        </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-5-2-clash-v2ray-ss-ssr.htm" title="5月2日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐">5月2日 | Stair Node节点订阅每天更新22.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-free-v2ray-subscribe.htm" title="4月5日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐">4月5日 | Stair Node节点订阅每天更新21.2M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-29-free-v2ray-subscribe.htm" title="4月29日 | Stair Node节点订阅每天更新22.8M/S免费节点订阅链接，付费节点订阅推荐">4月29日 | Stair Node节点订阅每天更新22.8M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-106251.htm" title="宠物寄养店成本（宠物寄养店怎么收费）">宠物寄养店成本（宠物寄养店怎么收费）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-free-v2ray-subscribe.htm" title="4月19日 | Stair Node节点订阅每天更新21.4M/S免费节点订阅链接，付费节点订阅推荐">4月19日 | Stair Node节点订阅每天更新21.4M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-89646.htm" title="SpringBoot线程池参数搜一堆资料还是不会配，我花一天测试换你此生明白。_在线工具">SpringBoot线程池参数搜一堆资料还是不会配，我花一天测试换你此生明白。_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-93363.htm" title="猫粮哪个牌子质量好性价比高知乎推荐（猫粮哪个牌子最好）">猫粮哪个牌子质量好性价比高知乎推荐（猫粮哪个牌子最好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-5-1-node-share-links.htm" title="5月1日 | Stair Node节点订阅每天更新19.1M/S免费节点订阅链接，付费节点订阅推荐">5月1日 | Stair Node节点订阅每天更新19.1M/S免费节点订阅链接，付费节点订阅推荐</a></li>
+                        <li class="py-2"><a href="/news/article-106250.htm" title="如何在Web前端实现CAD图文字全文搜索功能之技术分享">如何在Web前端实现CAD图文字全文搜索功能之技术分享</a></li>
+                        <li class="py-2"><a href="/news/article-86745.htm" title="动物预防针多少钱一针 动物预防针多少钱一针啊">动物预防针多少钱一针 动物预防针多少钱一针啊</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        Stair Node免费订阅官网 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="/assets/website/js/frontend/stairnode/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/stairnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
