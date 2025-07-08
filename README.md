@@ -1,4 +1,4 @@
-# 6月30日 | Stair Node节点订阅每天更新22.1M/S免费节点订阅链接，付费节点订阅推荐  更新时间 2025-06-30 09:01:44
+# 7月8日 | Stair Node节点订阅每天更新21M/S免费节点订阅链接，付费节点订阅推荐  更新时间 2025-07-08 08:22:17
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://stairnode.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://stairnode.github.io/uploads/2025/06/0-20250630.yaml
-- https://stairnode.github.io/uploads/2025/06/1-20250630.yaml
-- https://stairnode.github.io/uploads/2025/06/2-20250630.yaml
-- https://stairnode.github.io/uploads/2025/06/3-20250630.yaml
-- https://stairnode.github.io/uploads/2025/06/4-20250630.yaml
+- https://stairnode.github.io/uploads/2025/07/0-20250708.yaml
+- https://stairnode.github.io/uploads/2025/07/1-20250708.yaml
+- https://stairnode.github.io/uploads/2025/07/2-20250708.yaml
+- https://stairnode.github.io/uploads/2025/07/3-20250708.yaml
+- https://stairnode.github.io/uploads/2025/07/4-20250708.yaml
 
 ### V2ray订阅链接
 
-- https://stairnode.github.io/uploads/2025/06/0-20250630.txt
-- https://stairnode.github.io/uploads/2025/06/1-20250630.txt
-- https://stairnode.github.io/uploads/2025/06/2-20250630.txt
-- https://stairnode.github.io/uploads/2025/06/3-20250630.txt
-- https://stairnode.github.io/uploads/2025/06/4-20250630.txt
+- https://stairnode.github.io/uploads/2025/07/0-20250708.txt
+- https://stairnode.github.io/uploads/2025/07/1-20250708.txt
+- https://stairnode.github.io/uploads/2025/07/2-20250708.txt
+- https://stairnode.github.io/uploads/2025/07/3-20250708.txt
+- https://stairnode.github.io/uploads/2025/07/4-20250708.txt
 
 ### Sing-box订阅链接
 
-- https://stairnode.github.io/uploads/2025/06/20250630.json
+- https://stairnode.github.io/uploads/2025/07/20250708.json
 
 ## 更多clash节点订阅 ：
 
